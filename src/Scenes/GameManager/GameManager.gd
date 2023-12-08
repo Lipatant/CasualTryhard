@@ -3,38 +3,58 @@ class_name GameManager
 
 # EXPORT #
 
-## Node to place level scenes in
+## Node to place game scenes in
 ## self by default
-@export var level_container : Node
+@export var game_container : Control
+@export var timer : Timer
+@export var timer_range : Range
 
 # CONSTS #
 
-
+const GAMES : Array[String] = [
+	"CloudHunt"
+]
 
 # OTHER VARIABLES #
 
-var current_game : CanvasItem
+var current_game : Game
 
 # READY #
 
 func _ready() -> void:
-	load_scene()
+	if timer:
+		timer.timeout.connect(_on_timer_timeout)
+	load_game()
+
+# PROCESS #
+
+func _process(_delta: float) -> void:
+	if timer and timer_range:
+		if timer.wait_time > 0:
+			timer_range.value = timer.time_left / timer.wait_time
+
+# SIGNALS #
+
+func _on_timer_timeout() -> void:
+	if timer: timer.start()
 
 # LOAD #
 
-func load_scene(scene_data: SceneManagerData = SceneManagerData.new()) -> CanvasItem:
-	if !scene_data:
-		return null
+func load_game(game_name: String = "") -> void:
+	if !game_name:
+		return load_game(GAMES[0])
 	if current_game:
 		current_game.queue_free()
-	for child in get_children():
-		child.queue_free()
-	var resource : Resource = load(scene_data.resource_path)
+	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
 	if !resource:
-		return null
+		return
 	current_game = resource.instantiate()
 	if current_game:
 		if "game_manager" in current_game:
 			current_game["game_manager"] = self
-		add_child(current_game)
-	return current_game
+		current_game.game_manager = self
+		print(current_game)
+		if game_container:
+			game_container.add_child(current_game)
+		else:
+			add_child(current_game)
