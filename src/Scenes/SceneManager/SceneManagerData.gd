@@ -9,7 +9,7 @@ enum {
 }
 const SCENE_DEFAULT : int = SCENE_MAIN_MENU
 const SCENE_DEFAULT_DATA : Dictionary = {
-	SCENE_MAIN_MENU: "res://Scenes/Scenes/MainMenu.tscn",
+	SCENE_MAIN_MENU: "res://src/Scenes/MainMenu.tscn",
 }
 
 # OTHER VARIABLES #
