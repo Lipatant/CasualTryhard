@@ -3,12 +3,13 @@ class_name SceneManagerData
 # SCENE-RELATED CONSTANTS #
 
 enum {
-	SCENE_LEVEL,
+	SCENE_GAME,
 	SCENE_MAIN_MENU,
 	SCENE_TOTAL
 }
 const SCENE_DEFAULT : int = SCENE_MAIN_MENU
 const SCENE_DEFAULT_DATA : Dictionary = {
+	SCENE_GAME: "res://src/Scenes/GameManager.tscn",
 	SCENE_MAIN_MENU: "res://src/Scenes/MainMenu.tscn",
 }
 

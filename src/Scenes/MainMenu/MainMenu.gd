@@ -16,9 +16,9 @@ func _ready() -> void:
 
 # SIGNALS #
 
-func _on_new_game_pressed() -> void:
+func _on_play_pressed() -> void:
 	if scene_manager:
-		scene_manager.load_scene()
+		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_GAME))
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
