@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://jfxymstd7f07" path="res://graphic/CloudHunt/Cloud.png" id="2_7r5hk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
-size = Vector2(128, 64)
+size = Vector2(160, 96)
 
-[node name="Cloud" type="Area2D"]
+[node name="Cloud" type="Area2D" node_paths=PackedStringArray("collision_shape")]
 script = ExtResource("1_m52f0")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7r5hk")
