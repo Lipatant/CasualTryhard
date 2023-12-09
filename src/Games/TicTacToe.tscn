@@ -16,14 +16,6 @@ piece_container = NodePath("Node2D/PieceContainer")
 rule = 10
 win_on_end = false
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 84.0
-offset_bottom = 23.0
-text = "TicTacToe"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1, 0)
 
