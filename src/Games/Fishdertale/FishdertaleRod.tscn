@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6mokhbyyaja"]
+
+[ext_resource type="Texture2D" uid="uid://qixvrxqdvtlc" path="res://graphic/Fishdertale/Rod.png" id="1_8xhyh"]
+[ext_resource type="Script" path="res://src/Games/Fishdertale/FishdertaleRod.gd" id="1_hox2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tul0m"]
+size = Vector2(2016, 32)
+
+[node name="FishdertaleRod" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite", "timer")]
+collision_mask = 0
+script = ExtResource("1_hox2f")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_8xhyh")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tul0m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
