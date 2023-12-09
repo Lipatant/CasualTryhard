@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://durpusp032ptu"]
+[gd_scene load_steps=5 format=3 uid="uid://durpusp032ptu"]
 
 [ext_resource type="Script" path="res://src/Scenes/EndOfGame/EndOfGame.gd" id="1_cwj0s"]
-[ext_resource type="Texture2D" uid="uid://dru52neayltau" path="res://graphic/Fishdertale/Fish.png" id="2_r4ld3"]
-[ext_resource type="Texture2D" uid="uid://x7khvvj8e27" path="res://graphic/CloudHunt/BackgroundBirds.png" id="3_tiixd"]
-[ext_resource type="Texture2D" uid="uid://dbeyqn7g3tgtb" path="res://graphic/TicTacToe/Piece.png" id="4_rwo6g"]
+[ext_resource type="PackedScene" uid="uid://c4esenxr2qgxy" path="res://src/Scenes/MenuBackground.tscn" id="2_2jlvg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qpnax"]
 font_size = 40
@@ -69,23 +67,7 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="Node2D" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.196078)
-
-[node name="Fish" type="Sprite2D" parent="Node2D"]
-position = Vector2(1125, 623)
-texture = ExtResource("2_r4ld3")
-
-[node name="Birds" type="Sprite2D" parent="Node2D"]
-position = Vector2(228, 162)
-texture = ExtResource("3_tiixd")
-
-[node name="TicTacToePiece1" type="Sprite2D" parent="Node2D"]
-position = Vector2(914, 167)
-texture = ExtResource("4_rwo6g")
-hframes = 9
-vframes = 3
-frame = 20
+[node name="MenuBackground" parent="." instance=ExtResource("2_2jlvg")]
 
 [connection signal="pressed" from="ButtonContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ButtonContainer/Exit" to="." method="_on_exit_pressed"]

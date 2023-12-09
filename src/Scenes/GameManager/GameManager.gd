@@ -12,6 +12,7 @@ class_name GameManager
 @export var health_label : Label
 @export var name_label : Label
 @export var name_label_old : Label
+@export var rule_label : Label
 
 # CONSTS #
 
@@ -83,6 +84,7 @@ func _on_timer_timeout() -> void:
 
 func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 	if timer_transition: timer_transition.start()
+	if rule_label: rule_label.visible = true
 	var has_won : bool = win
 	if current_game:
 		if use_end_output:
@@ -100,6 +102,7 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 
 func _on_timer_transition_timeout() -> void:
 	if timer: timer.start()
+	if rule_label: rule_label.visible = false
 	if current_game:
 		current_game.start()
 		current_game.modulate = Color.WHITE
@@ -121,6 +124,7 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		if previous_game: previous_game.queue_free()
 		if name_label_old: name_label_old.text = name_label.text
 		if name_label: name_label.text = ""
+		if rule_label: rule_label.text = ""
 		previous_game = current_game
 		current_game = null
 		return
@@ -139,6 +143,8 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 	previous_game = current_game
 	current_game = resource.instantiate()
 	if current_game:
+		if rule_label:
+			rule_label.text = Game.RULE_TEXT[current_game.rule] if Game.RULE_TEXT.has(current_game.rule) else ""
 		current_game.game_manager = self
 		current_game.modulate = Color.WHITE * 1.0
 		current_game.game_end.connect(_on_game_end)
