@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://45t3bjuxo2th"]
+
+[ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHunt.gd" id="1_jy2xx"]
+[ext_resource type="PackedScene" uid="uid://vmuo63clehkt" path="res://src/Games/ZombieHunt/ZombieHuntZombie.tscn" id="2_v4kfi"]
+
+[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jy2xx")
+zombie_container = NodePath("Node2D/ZombieContainer")
+rule = 3
+win_on_end = false
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ZombieContainer" type="Node2D" parent="Node2D"]
+
+[node name="Zombie" parent="Node2D/ZombieContainer" instance=ExtResource("2_v4kfi")]
+position = Vector2(594, 126)
+
+[node name="Zombie2" parent="Node2D/ZombieContainer" instance=ExtResource("2_v4kfi")]
+position = Vector2(408, 108)
+
+[node name="Zombie3" parent="Node2D/ZombieContainer" instance=ExtResource("2_v4kfi")]
+position = Vector2(268, 131)
+
+[node name="Zombie4" parent="Node2D/ZombieContainer" instance=ExtResource("2_v4kfi")]
+position = Vector2(100, 84)
