@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHunt.gd" id="1_560b7"]
 [ext_resource type="PackedScene" uid="uid://vmuo63clehkt" path="res://src/Games/ZombieHunt/ZombieHuntZombie.tscn" id="2_xovgl"]
 
-[node name="ZombieHunt" type="Control"]
+[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_560b7")
+zombie_container = NodePath("Node2D/ZombieContainer")
 
 [node name="Node2D" type="Node2D" parent="."]
 

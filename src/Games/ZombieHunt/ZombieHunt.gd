@@ -20,9 +20,7 @@ func _ready() -> void:
 			zombie_count += 1
 
 func _new_click_input(position : Vector2) -> void:
-	print('1')
 	if game_state != State.PLAYING or !zombie_container: return
-	print('2')
 	var zombie_hit : int = 0
 	var zombie_rect : Rect2
 	for zombie : ZombieHuntZombie in zombie_container.get_children():

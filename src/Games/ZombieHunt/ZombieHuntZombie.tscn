@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
 size = Vector2(85, 124)
 
-[node name="Zombie" type="Area2D"]
+[node name="Zombie" type="Area2D" node_paths=PackedStringArray("collision_shape")]
 script = ExtResource("1_gjc2g")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.692, 1)
