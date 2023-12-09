@@ -24,7 +24,8 @@ var current_game : Game
 var current_game_id : int = 0
 var previous_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-
+var current_game_list : Array[String] = GAMES
+var next_game_list : Array[String] = []
 # READY #
 
 func _ready() -> void:
@@ -74,10 +75,21 @@ func _on_game_end(_win: bool) -> void:
 
 # LOAD #
 
+func get_random_game() -> String:
+	if (current_game_list.size() == 0):
+		current_game_list = next_game_list
+		next_game_list = []
+	var rand: int = randi_range(0, current_game_list.size() - 1)
+	var game: String = current_game_list[rand]
+	current_game_list.remove_at(rand)
+	next_game_list.push_back(game)
+	return game
+
 func load_game(game_name: String = "") -> void:
 	if !game_name:
-		current_game_id = (current_game_id + 1) % GAMES.size()
-		return load_game(GAMES[current_game_id])
+		var new_game = get_random_game()
+#		current_game_id = (current_game_id + 1) % GAMES.size()
+		return load_game(new_game)
 	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
 	if !resource:
 		return
