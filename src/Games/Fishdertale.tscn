@@ -37,7 +37,6 @@ position = Vector2(585, 332)
 
 [node name="Point1" type="Node2D" parent="Node2D/RodContainer"]
 position = Vector2(-130, -101)
-scale = Vector2(0.696867, 0.686303)
 
 [node name="PLACEHOLDER" parent="Node2D/RodContainer/Point1" instance_placeholder="res://src/Games/Fishdertale/FishdertaleRod.tscn"]
 rotation = 0.558187
