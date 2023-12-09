@@ -11,17 +11,10 @@ config_version=5
 [application]
 
 config/name="Casual Tryhard"
-run/main_scene="res://src/Scenes/SceneManager.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="viewport"
-
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.0705882, 0.0705882, 0.0705882, 1)
