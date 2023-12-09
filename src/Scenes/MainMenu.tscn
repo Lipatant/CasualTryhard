@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://boldmhk6jtyed"]
+
+[ext_resource type="Script" path="res://src/Scenes/MainMenu/MainMenu.gd" id="1_mblvg"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mblvg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="LabelEmpty" type="Label" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+text = "Leave"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Play"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Normal"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer1/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]

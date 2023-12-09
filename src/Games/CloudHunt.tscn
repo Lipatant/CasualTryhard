@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d32a0n3kkbes8"]
+
+[ext_resource type="Script" path="res://src/Games/CloudHunt/CloudHunt.gd" id="1_lq3oc"]
+[ext_resource type="PackedScene" uid="uid://cy14yoth71q2w" path="res://src/Games/CloudHunt/CloudHuntCloud.tscn" id="2_eppnk"]
+[ext_resource type="Texture2D" uid="uid://bsf4d6ioov1yx" path="res://graphic/CloudHunt/Sun.png" id="3_hg5qc"]
+[ext_resource type="Script" path="res://src/Games/CloudHunt/Sun.gd" id="4_jvufj"]
+[ext_resource type="Texture2D" uid="uid://x7khvvj8e27" path="res://graphic/CloudHunt/BackgroundBirds.png" id="5_i41mk"]
+
+[node name="CloudHunt" type="Control" node_paths=PackedStringArray("cloud_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lq3oc")
+cloud_container = NodePath("Node2D/CloudContainer")
+rule = 3
+win_on_end = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 23.0
+text = "CloudHunt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CloudContainer" type="Node2D" parent="Node2D"]
+
+[node name="Cloud1" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(859, 69)
+
+[node name="Cloud2" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(838, 334)
+
+[node name="Cloud3" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(554, 169)
+
+[node name="Cloud4" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(1087, 393)
+
+[node name="Sun" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(1197, -30)
+texture = ExtResource("3_hg5qc")
+script = ExtResource("4_jvufj")
+
+[node name="Birds" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(229, 461)
+texture = ExtResource("5_i41mk")

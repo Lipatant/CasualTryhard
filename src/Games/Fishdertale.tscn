@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://8vmnaxw72ow0"]
+
+[ext_resource type="Script" path="res://src/Games/Fishdertale/Fishdertale.gd" id="1_eusx0"]
+[ext_resource type="PackedScene" uid="uid://dy65iwsn3tvoa" path="res://src/Games/Fishdertale/FishertaleFish.tscn" id="2_dv0ne"]
+
+[node name="Fishdertale" type="Control" node_paths=PackedStringArray("fish", "rod_container", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eusx0")
+fish = NodePath("Node2D/Fish")
+rod_container = NodePath("Node2D/RodContainer")
+timer = NodePath("Timer")
+rule = 8
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 86.0
+offset_bottom = 23.0
+text = "Fishdertale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Fish" parent="Node2D" instance=ExtResource("2_dv0ne")]
+position = Vector2(585, 332)
+
+[node name="RodContainer" type="Node2D" parent="Node2D"]
+
+[node name="Point1" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(-130, -101)
+scale = Vector2(0.696867, 0.686303)
+
+[node name="PLACEHOLDER" parent="Node2D/RodContainer/Point1" instance_placeholder="res://src/Games/Fishdertale/FishdertaleRod.tscn"]
+rotation = 0.558187
+
+[node name="Point2" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(606, -102)
+
+[node name="Point3" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(1238, -84)
+
+[node name="Point4" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(-92, 292)
+
+[node name="Point5" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(1268, 334)
+
+[node name="Point6" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(-106, 720)
+
+[node name="Point7" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(582, 728)
+
+[node name="Point8" type="Node2D" parent="Node2D/RodContainer"]
+position = Vector2(1274, 724)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Node2D/Fish" to="." method="_on_fish_area_entered"]

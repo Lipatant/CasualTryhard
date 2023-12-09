@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs3oy5xmgp1ri"]
+
+[ext_resource type="Script" path="res://src/Scenes/GameManager/GameManager.gd" id="1_o218o"]
+
+[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o218o")
+game_container = NodePath("Game")
+timer = NodePath("Timer")
+timer_transition = NodePath("TimerTransition")
+timer_range = NodePath("TimerRange")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="TimerTransition" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerRange" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.001
+value = 0.5
+show_percentage = false
+
+[node name="Game" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PLACEHOLDER" parent="Game" instance_placeholder="res://src/Games/CloudHunt.tscn"]
+layout_mode = 1
