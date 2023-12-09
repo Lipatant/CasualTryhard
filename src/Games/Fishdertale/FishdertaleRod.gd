@@ -18,8 +18,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if timer and timer.wait_time > 0 and sprite:
-		var scale : float = ((timer.time_left / timer.wait_time) * 2 - 1.0) if (timer.time_left > timer.wait_time / 2) else (1.0 - (timer.time_left / timer.wait_time) * 2)
-		position = Vector2(-1024.0 * 1.5 * (scale * 2 - 0.5), 0.0).rotated(fixed_rotation)
+		var position_scale : float = ((timer.time_left / timer.wait_time) * 2 - 1.0) if (timer.time_left > timer.wait_time / 2) else (1.0 - (timer.time_left / timer.wait_time) * 2)
+		position = Vector2(-1024.0 * 1.5 * (position_scale * 2 - 0.5), 0.0).rotated(fixed_rotation)
 		set_rotation(fixed_rotation)
 
 # SIGNALS #

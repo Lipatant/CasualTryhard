@@ -17,6 +17,7 @@ timer = NodePath("Timer")
 rule = 8
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -1.0
 offset_right = 86.0
@@ -26,7 +27,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 
 [node name="Node2D" type="Node2D" parent="."]
 

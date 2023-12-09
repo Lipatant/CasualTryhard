@@ -52,8 +52,11 @@ func _process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if timer_transition: timer_transition.start()
+	call_deferred("_current_game_end")
+	call_deferred("load_game")
+
+func _current_game_end() -> void:
 	if current_game: current_game.end()
-	load_game()
 
 func _on_timer_transition_timeout() -> void:
 	if timer: timer.start()
