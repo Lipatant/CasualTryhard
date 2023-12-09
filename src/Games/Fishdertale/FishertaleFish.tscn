@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy65iwsn3tvoa"]
+
+[ext_resource type="Script" path="res://src/Games/Fishdertale/FishertaleFish.gd" id="1_0lvbe"]
+[ext_resource type="Texture2D" uid="uid://dru52neayltau" path="res://graphic/Fishdertale/Fish.png" id="1_kwv4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cj3f"]
+size = Vector2(96, 96)
+
+[node name="Fish" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
+collision_layer = 0
+script = ExtResource("1_0lvbe")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kwv4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7cj3f")
+disabled = true

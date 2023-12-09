@@ -15,6 +15,7 @@ class_name GameManager
 const GAMES : Array[String] = [
 	"CloudHunt",
 	"TicTacToe",
+	"Fishdertale",
 ]
 
 # OTHER VARIABLES #
