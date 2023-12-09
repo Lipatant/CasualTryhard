@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dru52neayltau" path="res://graphic/Fishdertale/Fish.png" id="1_kwv4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cj3f"]
-size = Vector2(96, 96)
+size = Vector2(32, 32)
 
 [node name="Fish" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
 collision_layer = 0
