@@ -13,14 +13,16 @@ class_name GameManager
 # CONSTS #
 
 const GAMES : Array[String] = [
-	"CloudHunt"
+	"CloudHunt",
+	"TicTacToe",
 ]
 
 # OTHER VARIABLES #
 
 var current_game : Game
-var previous_game : Game
 var current_game_id : int = 0
+var previous_game : Game
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 # READY #
 
