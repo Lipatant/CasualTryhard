@@ -27,6 +27,8 @@ var health : int = 3
 var previous_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
+var scene_manager : SceneManager
+
 # READY #
 
 func _ready() -> void:
@@ -82,6 +84,9 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 			current_game.end()
 	if !has_won:
 		_set_health(health - 1)
+		if health < 1:
+			load_game("", true)
+			return
 	load_game()
 
 func _on_timer_transition_timeout() -> void:
@@ -92,6 +97,8 @@ func _on_timer_transition_timeout() -> void:
 	if previous_game:
 		previous_game.queue_free()
 		previous_game = null
+	if !current_game and scene_manager:
+		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_MAIN_MENU))
 
 ## When the game end BEFORE the timer
 func _on_game_end(_win: bool) -> void:
@@ -100,10 +107,15 @@ func _on_game_end(_win: bool) -> void:
 
 # LOAD #
 
-func load_game(game_name: String = "") -> void:
+func load_game(game_name: String = "", force_null: bool = false) -> void:
+	if force_null:
+		if previous_game: previous_game.queue_free()
+		previous_game = current_game
+		current_game = null
+		return
 	if !game_name:
 		current_game_id = (current_game_id + 1) % GAMES.size()
-		return load_game(GAMES[current_game_id])
+		return load_game(GAMES[current_game_id], force_null)
 	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
 	if !resource:
 		return
