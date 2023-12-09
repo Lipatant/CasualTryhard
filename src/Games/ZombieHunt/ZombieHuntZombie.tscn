@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://vmuo63clehkt"]
 
-[ext_resource type="Script" path="res://src/Games/CloudHunt/CloudHuntCloud.gd" id="1_v57ee"]
+[ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHuntZombie.gd" id="1_gjc2g"]
 [ext_resource type="Texture2D" uid="uid://sarcas4g41p0" path="res://graphic/ZombieHunt/Zombie.png" id="2_v3wnc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
 size = Vector2(85, 124)
 
 [node name="Zombie" type="Area2D"]
-script = ExtResource("1_v57ee")
+script = ExtResource("1_gjc2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.692, 1)
