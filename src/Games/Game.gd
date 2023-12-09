@@ -22,6 +22,20 @@ enum Rule {
 	WIN_OR_TIE,
 }
 
+const RULE_TEXT : Dictionary = {
+	Rule.NONE: "????",
+	Rule.ALIGN: "Align!",
+	Rule.DODGE: "Dodge!",
+	Rule.HIT: "Hit!",
+	Rule.LOSE: "Lose!",
+	Rule.LOSE_OR_TIE: "Lose or Tie!",
+	Rule.SCORE: "Score!",
+	Rule.STACK: "Stack!",
+	Rule.SURVIVE: "Survive!",
+	Rule.WIN: "Win!",
+	Rule.WIN_OR_TIE: "Win or Tie!",
+}
+
 enum State {
 	PREPARE,
 	PLAYING,
@@ -55,4 +69,4 @@ func start() -> void:
 
 func end() -> bool:
 	game_state = State.ENDED
-	return true
+	return win_on_end
