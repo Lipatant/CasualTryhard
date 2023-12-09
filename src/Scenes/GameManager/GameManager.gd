@@ -31,7 +31,7 @@ var previous_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var scene_manager : SceneManager
-var current_game_list : Array[String] = GAMES
+var current_game_list : Array[String] = GAMES.duplicate()
 var next_game_list : Array[String] = []
 
 # READY #
@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 			timer_range.value = timer.time_left / timer.wait_time
 		elif timer_transition and timer_transition.wait_time > 0:
 			timer_range.value = 1.0 - timer_transition.time_left / timer_transition.wait_time
-	if timer.is_stopped() and !timer_transition.is_stopped() and timer_transition.wait_time > 0:
+	if timer and timer.is_stopped() and !timer_transition.is_stopped() and timer_transition.wait_time > 0:
 		if current_game:
 			current_game.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
 		if name_label:
@@ -141,7 +141,7 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		current_game = null
 		return
 	if !game_name:
-    var new_game = get_random_game()
+		var new_game = get_random_game()
 		return load_game(new_game, force_null)
 	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
 	if scene_manager:
