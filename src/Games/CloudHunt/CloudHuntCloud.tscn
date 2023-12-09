@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy14yoth71q2w"]
+
+[ext_resource type="Script" path="res://src/Games/CloudHunt/CloudHuntCloud.gd" id="1_m52f0"]
+[ext_resource type="Texture2D" uid="uid://jfxymstd7f07" path="res://graphic/CloudHunt/Cloud.png" id="2_7r5hk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
+size = Vector2(128, 64)
+
+[node name="Cloud" type="Area2D"]
+script = ExtResource("1_m52f0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7r5hk")
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a16a2")

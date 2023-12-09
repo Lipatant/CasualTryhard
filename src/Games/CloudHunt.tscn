@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d32a0n3kkbes8"]
+[gd_scene load_steps=3 format=3 uid="uid://d32a0n3kkbes8"]
 
 [ext_resource type="Script" path="res://src/Games/CloudHunt/CloudHunt.gd" id="1_lq3oc"]
+[ext_resource type="PackedScene" uid="uid://cy14yoth71q2w" path="res://src/Games/CloudHunt/CloudHuntCloud.tscn" id="2_eppnk"]
 
 [node name="CloudHunt" type="Control"]
 layout_mode = 3
@@ -10,11 +11,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lq3oc")
-rule = 2
+rule = 3
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_right = 84.0
 offset_bottom = 23.0
 text = "CloudHunt"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CloudContainer" type="Node2D" parent="Node2D"]
+
+[node name="Cloud1" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(176, 186)
+
+[node name="Cloud2" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(532, 217)
+
+[node name="Cloud3" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(194, 413)
+
+[node name="Cloud4" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(947, 469)
