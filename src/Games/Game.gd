@@ -55,4 +55,4 @@ func start() -> void:
 
 func end() -> bool:
 	game_state = State.ENDED
-	return true
+	return win_on_end

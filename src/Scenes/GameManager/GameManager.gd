@@ -9,6 +9,7 @@ class_name GameManager
 @export var timer : Timer
 @export var timer_transition : Timer
 @export var timer_range : Range
+@export var health_label : Label
 
 # CONSTS #
 
@@ -22,6 +23,7 @@ const GAMES : Array[String] = [
 
 var current_game : Game
 var current_game_id : int = 0
+var health : int = 3
 var previous_game : Game
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -32,7 +34,9 @@ func _ready() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 	if timer_transition:
 		timer_transition.timeout.connect(_on_timer_transition_timeout)
-	_on_timer_timeout()
+	_set_health(health)
+	if timer_transition: timer_transition.start()
+	load_game()
 
 # PROCESS #
 
@@ -48,15 +52,37 @@ func _process(_delta: float) -> void:
 		if previous_game:
 			previous_game.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
 
+# HEALTHS #
+
+func _set_health(new_health: int) -> void:
+	if new_health < 0:
+		health = 0
+	else:
+		health = new_health
+	if health_label:
+		health_label.text = " "
+		for _i in range(health):
+			health_label.text += "♥"
+
+func _get_health() -> int:
+	return health;
+
 # SIGNALS #
 
 func _on_timer_timeout() -> void:
-	if timer_transition: timer_transition.start()
-	call_deferred("_current_game_end")
-	call_deferred("load_game")
+	call_deferred("_current_game_end", true)
 
-func _current_game_end() -> void:
-	if current_game: current_game.end()
+func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
+	if timer_transition: timer_transition.start()
+	var has_won : bool = win
+	if current_game:
+		if use_end_output:
+			has_won = current_game.end()
+		else:
+			current_game.end()
+	if !has_won:
+		_set_health(health - 1)
+	load_game()
 
 func _on_timer_transition_timeout() -> void:
 	if timer: timer.start()
@@ -70,7 +96,7 @@ func _on_timer_transition_timeout() -> void:
 ## When the game end BEFORE the timer
 func _on_game_end(_win: bool) -> void:
 	timer.stop()
-	_on_timer_timeout()
+	call_deferred("_current_game_end", false, _win)
 
 # LOAD #
 
