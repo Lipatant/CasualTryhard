@@ -10,6 +10,8 @@ class_name GameManager
 @export var timer_transition : Timer
 @export var timer_range : Range
 @export var health_label : Label
+@export var name_label : Label
+@export var name_label_old : Label
 
 # CONSTS #
 
@@ -51,8 +53,12 @@ func _process(_delta: float) -> void:
 	if timer.is_stopped() and !timer_transition.is_stopped() and timer_transition.wait_time > 0:
 		if current_game:
 			current_game.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
+		if name_label:
+			name_label.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
 		if previous_game:
 			previous_game.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
+		if name_label_old:
+			name_label_old.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
 
 # HEALTHS #
 
@@ -110,6 +116,8 @@ func _on_game_end(_win: bool) -> void:
 func load_game(game_name: String = "", force_null: bool = false) -> void:
 	if force_null:
 		if previous_game: previous_game.queue_free()
+		if name_label_old: name_label_old.text = name_label.text
+		if name_label: name_label.text = ""
 		previous_game = current_game
 		current_game = null
 		return
@@ -117,6 +125,8 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		current_game_id = (current_game_id + 1) % GAMES.size()
 		return load_game(GAMES[current_game_id], force_null)
 	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
+	if name_label_old: name_label_old.text = name_label.text
+	if name_label: name_label.text = game_name + " "
 	if !resource:
 		return
 	if previous_game:
