@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d32a0n3kkbes8"]
+[gd_scene load_steps=6 format=3 uid="uid://d32a0n3kkbes8"]
 
 [ext_resource type="Script" path="res://src/Games/CloudHunt/CloudHunt.gd" id="1_lq3oc"]
 [ext_resource type="PackedScene" uid="uid://cy14yoth71q2w" path="res://src/Games/CloudHunt/CloudHuntCloud.tscn" id="2_eppnk"]
 [ext_resource type="Texture2D" uid="uid://bsf4d6ioov1yx" path="res://graphic/CloudHunt/Sun.png" id="3_hg5qc"]
 [ext_resource type="Script" path="res://src/Games/CloudHunt/Sun.gd" id="4_jvufj"]
+[ext_resource type="Texture2D" uid="uid://x7khvvj8e27" path="res://graphic/CloudHunt/BackgroundBirds.png" id="5_i41mk"]
 
 [node name="CloudHunt" type="Control" node_paths=PackedStringArray("cloud_container")]
 layout_mode = 3
@@ -46,3 +47,8 @@ modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(1197, -30)
 texture = ExtResource("3_hg5qc")
 script = ExtResource("4_jvufj")
+
+[node name="Birds" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(229, 461)
+texture = ExtResource("5_i41mk")
