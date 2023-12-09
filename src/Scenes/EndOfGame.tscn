@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://durpusp032ptu"]
+
+[ext_resource type="Script" path="res://src/Scenes/EndOfGame/EndOfGame.gd" id="1_cwj0s"]
+[ext_resource type="Texture2D" uid="uid://dru52neayltau" path="res://graphic/Fishdertale/Fish.png" id="2_r4ld3"]
+[ext_resource type="Texture2D" uid="uid://x7khvvj8e27" path="res://graphic/CloudHunt/BackgroundBirds.png" id="3_tiixd"]
+[ext_resource type="Texture2D" uid="uid://dbeyqn7g3tgtb" path="res://graphic/TicTacToe/Piece.png" id="4_rwo6g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qpnax"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_hudso"]
+font_size = 30
+
+[node name="EndOfGame" type="Control" node_paths=PackedStringArray("timer", "score_label", "game_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwj0s")
+timer = NodePath("Timer")
+score_label = NodePath("InfoContainer/Score")
+game_label = NodePath("InfoContainer/Game")
+
+[node name="InfoContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Score" type="Label" parent="InfoContainer"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_qpnax")
+horizontal_alignment = 1
+
+[node name="Game" type="Label" parent="InfoContainer"]
+layout_mode = 2
+text = "Ended on "
+label_settings = SubResource("LabelSettings_hudso")
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = -100.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Exit" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+
+[node name="Fish" type="Sprite2D" parent="Node2D"]
+position = Vector2(1125, 623)
+texture = ExtResource("2_r4ld3")
+
+[node name="Birds" type="Sprite2D" parent="Node2D"]
+position = Vector2(228, 162)
+texture = ExtResource("3_tiixd")
+
+[node name="TicTacToePiece1" type="Sprite2D" parent="Node2D"]
+position = Vector2(914, 167)
+texture = ExtResource("4_rwo6g")
+hframes = 9
+vframes = 3
+frame = 20
+
+[connection signal="pressed" from="ButtonContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ButtonContainer/Exit" to="." method="_on_exit_pressed"]

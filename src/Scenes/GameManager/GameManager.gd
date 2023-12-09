@@ -38,6 +38,7 @@ func _ready() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 	if timer_transition:
 		timer_transition.timeout.connect(_on_timer_transition_timeout)
+	if scene_manager: scene_manager.score = 0
 	_set_health(health)
 	if timer_transition: timer_transition.start()
 	load_game()
@@ -88,7 +89,9 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 			has_won = current_game.end()
 		else:
 			current_game.end()
-	if !has_won:
+	if has_won:
+		if scene_manager: scene_manager.score += 1
+	else:
 		_set_health(health - 1)
 		if health < 1:
 			load_game("", true)
@@ -104,7 +107,7 @@ func _on_timer_transition_timeout() -> void:
 		previous_game.queue_free()
 		previous_game = null
 	if !current_game and scene_manager:
-		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_MAIN_MENU))
+		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_END_OF_GAME))
 
 ## When the game end BEFORE the timer
 func _on_game_end(_win: bool) -> void:
@@ -125,6 +128,8 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		current_game_id = (current_game_id + 1) % GAMES.size()
 		return load_game(GAMES[current_game_id], force_null)
 	var resource : Resource = load("res://src/Games/" + game_name + ".tscn")
+	if scene_manager:
+		scene_manager.last_game = game_name
 	if name_label_old: name_label_old.text = name_label.text
 	if name_label: name_label.text = game_name + " "
 	if !resource:
