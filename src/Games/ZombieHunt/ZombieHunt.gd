@@ -4,6 +4,7 @@ extends Game
 
 @export var zombie_container : Node
 @export var weapon : ZombieHuntWeapon
+@export var gunshot: AudioStreamPlayer
 # ONREADIES #
 
 @onready var zombie_resource : Resource = preload("res://src/Games/ZombieHunt/ZombieHuntZombie.tscn")
@@ -22,6 +23,7 @@ func _process(_delta):
 	if !zombie_container: return
 
 func _new_click_input(position : Vector2) -> void:
+	if gunshot: gunshot.play()
 	if game_state != State.PLAYING or !zombie_container or !weapon: return
 	weapon.shoot()
 	var zombie_rect : Rect2

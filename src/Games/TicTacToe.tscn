@@ -80,7 +80,7 @@ frame = 17
 
 [node name="move" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rveqb")
-volume_db = 4.685
+volume_db = 24.0
 
 [editable path="Node2D/PieceContainer/Piece1"]
 [editable path="Node2D/PieceContainer/Piece2"]

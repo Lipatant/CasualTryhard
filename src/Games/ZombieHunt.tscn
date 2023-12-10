@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://45t3bjuxo2th"]
+[gd_scene load_steps=5 format=3 uid="uid://cce5hohlussfs"]
 
 [ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHunt.gd" id="1_560b7"]
 [ext_resource type="PackedScene" uid="uid://vmuo63clehkt" path="res://src/Games/ZombieHunt/ZombieHuntZombie.tscn" id="2_xovgl"]
 [ext_resource type="PackedScene" uid="uid://5xg6lttjc5f8" path="res://src/Games/ZombieHunt/ZombieHuntWeapon.tscn" id="3_gsasw"]
+[ext_resource type="AudioStream" uid="uid://bkihke47hk8l0" path="res://sound/gunshot.mp3" id="4_5x3mc"]
 
 [node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container", "weapon")]
 layout_mode = 3
@@ -52,3 +53,8 @@ position = Vector2(1030, 74)
 
 [node name="ZombieHuntWeapon" parent="Node2D" instance=ExtResource("3_gsasw")]
 position = Vector2(101, 545)
+
+[node name="gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5x3mc")
+volume_db = -18.307
+pitch_scale = 2.33

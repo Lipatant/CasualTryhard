@@ -6,6 +6,7 @@ extends Game
 @export var instrument_collision_shape : CollisionShape2D
 @export var note_container : Node
 @export var timer : Timer
+@export var drum_sound: AudioStreamPlayer
 
 # ONREADIES #
 
@@ -24,6 +25,7 @@ func start() -> void:
 	_spawn_note()
 
 func _new_click_input(_position : Vector2) -> void:
+	if drum_sound: drum_sound.play()
 	if game_state != State.PLAYING: return
 	if !instrument: return
 	var note_hit : int = 0
