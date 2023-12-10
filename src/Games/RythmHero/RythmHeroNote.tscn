@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://hjpp72fqldod"]
+
+[ext_resource type="Texture2D" uid="uid://icp3eqxorel2" path="res://graphic/RythmHero/Piece.png" id="1_khfdk"]
+[ext_resource type="Script" path="res://src/Games/RythmHero/RythmHeroNote.gd" id="1_mapdt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k034"]
+size = Vector2(256, 256)
+
+[node name="Note" type="Area2D" node_paths=PackedStringArray("timer", "timer_overtime")]
+collision_mask = 0
+script = ExtResource("1_mapdt")
+timer = NodePath("Timer")
+timer_overtime = NodePath("TimerOvertime")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_khfdk")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3k034")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="TimerOvertime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerOvertime" to="." method="_on_timer_overtime_timeout"]

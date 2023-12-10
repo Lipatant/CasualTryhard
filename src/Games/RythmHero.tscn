@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnwhl54gipc8b"]
+
+[ext_resource type="Script" path="res://src/Games/RythmHero/RythmHero.gd" id="1_6wip2"]
+[ext_resource type="Texture2D" uid="uid://bol0bn1rqsbf4" path="res://graphic/RythmHero/Instrument.png" id="2_7xsip"]
+[ext_resource type="Script" path="res://src/Games/RythmHero/RythmHeroInstrument.gd" id="3_i743c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmqok"]
+size = Vector2(256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plh5k"]
+atlas = ExtResource("2_7xsip")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqrc1"]
+atlas = ExtResource("2_7xsip")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkshu"]
+atlas = ExtResource("2_7xsip")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_danc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plh5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqrc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkshu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="RythmHero" type="Control" node_paths=PackedStringArray("instrument", "instrument_collision_shape", "note_container", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wip2")
+instrument = NodePath("Node2D/Instrument")
+instrument_collision_shape = NodePath("Node2D/Instrument/CollisionShape2D")
+note_container = NodePath("Node2D/NoteContainer")
+timer = NodePath("Node2D/Timer")
+rule = 8
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="NoteContainer" type="Node2D" parent="Node2D"]
+
+[node name="Point1" type="Marker2D" parent="Node2D/NoteContainer"]
+position = Vector2(-196, 323)
+
+[node name="Point2" type="Marker2D" parent="Node2D/NoteContainer"]
+position = Vector2(1338, 323)
+
+[node name="Instrument" type="Area2D" parent="Node2D"]
+position = Vector2(584, 323)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Instrument"]
+shape = SubResource("RectangleShape2D_kmqok")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Instrument"]
+sprite_frames = SubResource("SpriteFrames_danc7")
+frame_progress = 0.521071
+script = ExtResource("3_i743c")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+wait_time = 0.25
+
+[connection signal="timeout" from="Node2D/Timer" to="." method="_on_timer_timeout"]
