@@ -207,7 +207,7 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 			_events.append(Event.LOSE)
 			if rule_event_label and EVENT_TEXT.has(Event.LOSE): rule_event_label.text = EVENT_TEXT.get(Event.LOSE)
 			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.LOSE): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.LOSE)
-		if !(EVENT_EXCLUDE.get(Event.FAST, []).has(game_name)) and (randi() % 5 < 5):
+		if !(EVENT_EXCLUDE.get(Event.FAST, []).has(game_name)) and (randi() % 5 < 1):
 			_events.append(Event.FAST)
 			if rule_event_label and EVENT_TEXT.has(Event.FAST): rule_event_label.text = EVENT_TEXT.get(Event.FAST)
 			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.FAST): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.FAST)
