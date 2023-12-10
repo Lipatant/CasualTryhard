@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhd7ast26wri5"
-path="res://.godot/imported/Samourai.png-6eae4a6622ce171217fffe000b056d93.ctex"
+uid="uid://bm0yy2hcv8p8x"
+path="res://.godot/imported/Slash.png-5ce69314caa43aa8a16c7832ca5bbee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphic/SamouraiMania/Samourai.png"
-dest_files=["res://.godot/imported/Samourai.png-6eae4a6622ce171217fffe000b056d93.ctex"]
+source_file="res://graphic/SamuraiMania/Slash.png"
+dest_files=["res://.godot/imported/Slash.png-5ce69314caa43aa8a16c7832ca5bbee8.ctex"]
 
 [params]
 
