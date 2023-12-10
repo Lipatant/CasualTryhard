@@ -34,9 +34,9 @@ func end() -> bool:
 
 #
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING: return
-	if umbrella: umbrella.target = position
+	if umbrella: umbrella.target = click_position
 
 # INPUT #
 

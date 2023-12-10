@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name GameManager
 
 # EXPORT #
@@ -68,6 +68,8 @@ var next_game_list : Array[String] = []
 
 var _events : Array[Event]
 var _timer_default : float
+var _current_transition : Vector2
+var _current_transition_rotation : float = 0.0
 
 # READY #
 
@@ -93,12 +95,16 @@ func _process(_delta: float) -> void:
 	if timer and timer.is_stopped() and !timer_transition.is_stopped() and timer_transition.wait_time > 0:
 		if current_game:
 			current_game.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
-		if name_label:
-			name_label.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
+			current_game.position = _current_transition * timer_transition.time_left / timer_transition.wait_time
+			current_game.rotation = _current_transition_rotation * timer_transition.time_left / timer_transition.wait_time
 		if previous_game:
 			previous_game.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
+			previous_game.position = _current_transition * (1.0 - timer_transition.time_left / timer_transition.wait_time)
+			previous_game.rotation = _current_transition_rotation * (1.0 - timer_transition.time_left / timer_transition.wait_time)
 		if name_label_old:
 			name_label_old.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
+		if name_label:
+			name_label.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
 
 # HEALTHS #
 
@@ -120,7 +126,23 @@ func _get_health() -> int:
 func _on_timer_timeout() -> void:
 	call_deferred("_current_game_end", true)
 
+func _get_new_transition() -> void:
+	var transitions : Array[Vector2] = [
+		Vector2(0, 0), Vector2(0, 0),
+		Vector2(0, 0), Vector2(0, 0),
+		Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)
+	]
+	var transition_rotations : Array[float] = [
+		0.0, 0.0,
+		-1.0, 1.0,
+		0.0, 0.0, 0.0, 0.0,
+	]
+	var transitionID : int = randi() % min(transitions.size(), transition_rotations.size())
+	_current_transition = transitions[transitionID] * size
+	_current_transition_rotation = transition_rotations[transitionID] * PI
+
 func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
+	_get_new_transition()
 	if timer_transition: timer_transition.start()
 	if rule_label: rule_label.visible = true
 	if rule_event_label: rule_event_label.visible = true
@@ -151,8 +173,10 @@ func _on_timer_transition_timeout() -> void:
 		previous_game.queue_free()
 		previous_game = null
 	if current_game:
-		current_game.start()
 		current_game.modulate = Color.WHITE
+		current_game.position = Vector2(0.0, 0.0)
+		current_game.rotation = 0
+		current_game.start()
 	if !current_game and scene_manager:
 		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_END_OF_GAME))
 

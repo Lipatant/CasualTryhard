@@ -19,14 +19,14 @@ func _ready() -> void:
 	if child_count < cloud_count:
 		cloud_count = child_count
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING or !cloud_container: return
 	var cloud_hit : int = 0
 	var cloud_rect : Rect2
 	for cloud : CloudHuntCloud in cloud_container.get_children():
 		if !cloud.collision_shape or !cloud.collision_shape.shape: continue
 		cloud_rect = cloud.collision_shape.shape.get_rect()
-		if !Rect2(cloud.collision_shape.global_position + cloud_rect.position, cloud_rect.size).has_point(position):
+		if !Rect2(cloud.collision_shape.global_position + cloud_rect.position, cloud_rect.size).has_point(click_position):
 			continue
 		cloud_count -= 1
 		cloud_hit += 1

@@ -39,11 +39,11 @@ func start() -> void:
 	super.start()
 	_on_timer_timeout()
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING: return
 	if !samurai or player_locked: return
 	var frame : SamuraiManiaSamurai.Frame = SamuraiManiaSamurai.Frame.IDLE
-	if position.y < samurai.global_position.y:
+	if click_position.y < samurai.global_position.y:
 		frame = SamuraiManiaSamurai.Frame.UP
 	else:
 		frame = SamuraiManiaSamurai.Frame.DOWN

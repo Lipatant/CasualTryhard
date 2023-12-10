@@ -1,4 +1,4 @@
-extends CanvasItem
+extends Control
 class_name Game
 
 # EXPORTS #

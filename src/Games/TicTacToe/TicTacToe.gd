@@ -31,13 +31,13 @@ func _ready() -> void:
 
 # INPUT #
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING: return
 	var piece_rect : Rect2
 	for piece : TicTacToePiece in _pieces:
 		if !piece or !piece.is_empty() or !piece.collision_shape or !piece.collision_shape.shape: continue
 		piece_rect = piece.collision_shape.shape.get_rect()
-		if !Rect2(piece.collision_shape.global_position + piece_rect.position, piece_rect.size).has_point(position):
+		if !Rect2(piece.collision_shape.global_position + piece_rect.position, piece_rect.size).has_point(click_position):
 			continue
 		piece.set_value(TicTacToePiece.Value.CIRCLE)
 		if move_sound: move_sound.play()

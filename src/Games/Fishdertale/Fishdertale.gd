@@ -25,9 +25,9 @@ func end() -> bool:
 		fish.target = fish.global_position
 	return super.end()
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING: return
-	if fish: fish.target = position
+	if fish: fish.target = click_position
 
 # INPUT #
 

@@ -24,7 +24,7 @@ func _ready() -> void:
 func _process(_delta):
 	if !zombie_container: return
 
-func _new_click_input(position : Vector2) -> void:
+func _new_click_input(click_position : Vector2) -> void:
 	if game_state != State.PLAYING or !zombie_container or !weapon: return
 	if gunshot: gunshot.play()
 	weapon.shoot()
@@ -32,7 +32,7 @@ func _new_click_input(position : Vector2) -> void:
 	for zombie : ZombieHuntZombie in zombie_container.get_children():
 		if !zombie.collision_shape or !zombie.collision_shape.shape: continue
 		zombie_rect = zombie.collision_shape.shape.get_rect()
-		if position.x >= zombie.collision_shape.global_position.x - zombie_rect.size.x / 2 and position.x <= zombie.collision_shape.global_position.x + zombie_rect.size.x / 2:
+		if click_position.x >= zombie.collision_shape.global_position.x - zombie_rect.size.x / 2 and click_position.x <= zombie.collision_shape.global_position.x + zombie_rect.size.x / 2:
 			zombie_count -= 1
 			zombie.kill()
 			continue
