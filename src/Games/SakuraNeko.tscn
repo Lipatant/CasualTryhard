@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4onley23easc"]
+[gd_scene load_steps=8 format=3 uid="uid://b4onley23easc"]
 
 [ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNeko.gd" id="1_2u7vv"]
 [ext_resource type="PackedScene" uid="uid://q3sn07xhuu80" path="res://src/Games/SakuraNeko/SakuraNekoUmbrella.tscn" id="2_itjlb"]
+[ext_resource type="Texture2D" uid="uid://bpvjb8fcue4du" path="res://graphic/SakuraNeko/Tree.png" id="2_s2wra"]
+[ext_resource type="Texture2D" uid="uid://butub4wqptiny" path="res://graphic/SakuraNeko/Ground.png" id="2_smxhc"]
 [ext_resource type="PackedScene" uid="uid://bt5e622mhoyhy" path="res://src/Games/SakuraNeko/SakuraNekoCat.tscn" id="3_82asw"]
 [ext_resource type="AudioStream" uid="uid://qhy3h0lrmbk" path="res://sound/cat.wav" id="4_slwqv"]
 
@@ -34,6 +36,16 @@ wait_time = 2.0
 autostart = true
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Ground" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(121, 307)
+texture = ExtResource("2_smxhc")
+
+[node name="Tree" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(899, 345)
+texture = ExtResource("2_s2wra")
 
 [node name="CatMovementContainer" type="Node2D" parent="Node2D"]
 
