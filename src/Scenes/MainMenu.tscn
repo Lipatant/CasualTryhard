@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://boldmhk6jtyed"]
 
 [ext_resource type="Script" path="res://src/Scenes/MainMenu/MainMenu.gd" id="1_mblvg"]
-[ext_resource type="PackedScene" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
+[ext_resource type="PackedScene" uid="uid://c4esenxr2qgxy" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
 [ext_resource type="AudioStream" uid="uid://8akjg4d07af8" path="res://music/menu.mp3" id="3_jhpva"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sas02"]
@@ -62,21 +62,32 @@ stream = ExtResource("3_jhpva")
 autoplay = true
 
 [node name="Contributors" type="Label" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 565.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -83.0
 offset_right = 195.0
-offset_bottom = 640.0
+offset_bottom = -8.0
+grow_vertical = 0
 text = "Virgile BERRIER
 Stanislas COMMENGE
 Damien BENAIS-CAPTAL"
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 391.0
-offset_top = 75.0
-offset_right = 742.0
-offset_bottom = 144.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -201.0
+offset_right = 181.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "CasualTryhard"
 label_settings = SubResource("LabelSettings_sas02")
 
