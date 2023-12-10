@@ -29,6 +29,7 @@ func start() -> void:
 func end() -> bool:
 	if cat and cat.collision_shape: cat.collision_shape.disabled = true
 	if umbrella and umbrella.collision_shape: umbrella.collision_shape.disabled = true
+	$cat.play()
 	return super.end()
 
 #

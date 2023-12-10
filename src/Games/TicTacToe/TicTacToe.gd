@@ -31,6 +31,7 @@ func _ready() -> void:
 # INPUT #
 
 func _new_click_input(position : Vector2) -> void:
+	$move.play()
 	if game_state != State.PLAYING: return
 	var piece_rect : Rect2
 	for piece : TicTacToePiece in _pieces:

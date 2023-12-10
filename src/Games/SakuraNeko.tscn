@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cavo37gaalxaw"]
+[gd_scene load_steps=6 format=3 uid="uid://b4onley23easc"]
 
 [ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNeko.gd" id="1_2u7vv"]
 [ext_resource type="PackedScene" uid="uid://q3sn07xhuu80" path="res://src/Games/SakuraNeko/SakuraNekoUmbrella.tscn" id="2_itjlb"]
 [ext_resource type="PackedScene" uid="uid://bt5e622mhoyhy" path="res://src/Games/SakuraNeko/SakuraNekoCat.tscn" id="3_82asw"]
+[ext_resource type="AudioStream" uid="uid://qhy3h0lrmbk" path="res://sound/cat.wav" id="4_slwqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbqqp"]
 size = Vector2(100, 1000)
@@ -88,6 +89,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Border"]
 shape = SubResource("RectangleShape2D_gbqqp")
 disabled = true
+
+[node name="cat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_slwqv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerCat" to="." method="_on_timer_cat_timeout"]
