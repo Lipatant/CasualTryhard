@@ -80,6 +80,7 @@ wait_time = 0.25
 
 [node name="DrumSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wuy6m")
-volume_db = 19.0
+volume_db = 4.01
+pitch_scale = 0.75
 
 [connection signal="timeout" from="Node2D/Timer" to="." method="_on_timer_timeout"]
