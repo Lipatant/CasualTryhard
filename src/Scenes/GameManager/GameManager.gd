@@ -36,6 +36,7 @@ enum Event {
 	NONE,
 	LOSE,
 	FAST,
+	REALLYFAST,
 }
 
 const EVENT_TEXT : Dictionary = {
@@ -44,11 +45,13 @@ const EVENT_TEXT : Dictionary = {
 
 const EVENT_TEXT_INFO : Dictionary = {
 	Event.FAST: "Faster",
+	Event.REALLYFAST: "REALLY FAST!",
 }
 
 const EVENT_EXCLUDE : Dictionary = {
 	Event.LOSE: ["TicTacToe", "SakuraNeko"],
 	Event.FAST: ["RythmHero", "Fishdertale", "SakuraNeko"],
+	Event.REALLYFAST: ["RythmHero", "Fishdertale", "SakuraNeko", "CloudHunt", "ZombieHunt"],
 }
 
 # OTHER VARIABLES #
@@ -211,12 +214,18 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 			_events.append(Event.FAST)
 			if rule_event_label and EVENT_TEXT.has(Event.FAST): rule_event_label.text = EVENT_TEXT.get(Event.FAST)
 			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.FAST): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.FAST)
+		elif !(EVENT_EXCLUDE.get(Event.REALLYFAST, []).has(game_name)) and (randi() % 5 < 1):
+			_events.append(Event.REALLYFAST)
+			if rule_event_label and EVENT_TEXT.has(Event.REALLYFAST): rule_event_label.text = EVENT_TEXT.get(Event.REALLYFAST)
+			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.REALLYFAST): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.REALLYFAST)
 		#
 		current_game.game_manager = self
 		current_game.modulate = Color.WHITE * 1.0
 		current_game.game_end.connect(_on_game_end)
 		if _events.has(Event.FAST):
 			current_game.game_time_multiplier *= 0.75
+		if _events.has(Event.REALLYFAST):
+			current_game.game_time_multiplier *= 0.5
 		if game_container:
 			game_container.add_child(current_game)
 		else:
