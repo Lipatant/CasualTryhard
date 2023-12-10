@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
 size = Vector2(160, 96)
 
-[node name="Cloud" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+[node name="Cloud" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
 script = ExtResource("1_m52f0")
 collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7r5hk")

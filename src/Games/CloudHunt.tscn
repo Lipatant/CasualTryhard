@@ -34,6 +34,30 @@ position = Vector2(554, 169)
 [node name="Cloud4" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
 position = Vector2(1087, 393)
 
+[node name="Cloud5" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(985, 203)
+
+[node name="Cloud6" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(633, 27)
+
+[node name="Cloud7" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(772, 189)
+
+[node name="Cloud8" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(1053, 83)
+
+[node name="Cloud9" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(897, 453)
+
+[node name="Cloud10" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(617, 306)
+
+[node name="Cloud11" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(437, 50)
+
+[node name="Cloud12" parent="Node2D/CloudContainer" instance=ExtResource("2_eppnk")]
+position = Vector2(1084, 513)
+
 [node name="Sun" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(1197, -30)

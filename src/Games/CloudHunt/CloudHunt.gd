@@ -3,21 +3,21 @@ extends Game
 # EXPORT #
 
 @export var cloud_container : Node
-
-# ONREADIES #
-
-@onready var cloud_resource : Resource = preload("res://src/Games/CloudHunt/CloudHuntCloud.tscn")
-
-# OTHER VARIABLES #
-
-var cloud_count : int = 0
+@export var cloud_count : int = 6
 
 # INPUTS #
 
 func _ready() -> void:
-	for child in (cloud_container.get_children() if cloud_container else get_children()):
-		if child is CloudHuntCloud:
-			cloud_count += 1
+	var child_count : int = cloud_container.get_child_count()
+	var child : Node = null
+	if cloud_container:
+		while child_count > cloud_count:
+			child = cloud_container.get_child(randi() % (cloud_container.get_child_count()))
+			cloud_container.remove_child(child)
+			child.queue_free()
+			child_count -= 1
+	if child_count < cloud_count:
+		cloud_count = child_count
 
 func _new_click_input(position : Vector2) -> void:
 	if game_state != State.PLAYING or !cloud_container: return

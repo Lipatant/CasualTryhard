@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k034"]
 size = Vector2(256, 256)
 
-[node name="Note" type="Area2D" node_paths=PackedStringArray("timer", "timer_overtime")]
+[node name="Note" type="Area2D" node_paths=PackedStringArray("sprite", "timer", "timer_overtime")]
 collision_mask = 0
 script = ExtResource("1_mapdt")
+sprite = NodePath("Sprite2D")
 timer = NodePath("Timer")
 timer_overtime = NodePath("TimerOvertime")
 
