@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://45t3bjuxo2th"]
+[gd_scene load_steps=4 format=3 uid="uid://45t3bjuxo2th"]
 
 [ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHunt.gd" id="1_560b7"]
 [ext_resource type="PackedScene" uid="uid://vmuo63clehkt" path="res://src/Games/ZombieHunt/ZombieHuntZombie.tscn" id="2_xovgl"]
+[ext_resource type="PackedScene" uid="uid://5xg6lttjc5f8" path="res://src/Games/ZombieHunt/ZombieHuntWeapon.tscn" id="3_gsasw"]
 
-[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container")]
+[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container", "weapon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,19 +13,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_560b7")
 zombie_container = NodePath("Node2D/ZombieContainer")
+weapon = NodePath("Node2D/ZombieHuntWeapon")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 500)
+points = PackedVector2Array(0, 0, 1200, 0)
+default_color = Color(0.678431, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="ZombieContainer" type="Node2D" parent="Node2D"]
 
 [node name="Zombie" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(575, 134)
+position = Vector2(168, 102)
 
 [node name="Zombie2" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(436, 133)
+position = Vector2(329, 142)
 
 [node name="Zombie3" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(298, 133)
+position = Vector2(560, 111)
 
 [node name="Zombie4" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(155, 135)
+position = Vector2(788, 144)
+
+[node name="Zombie5" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
+position = Vector2(994, 111)
+
+[node name="ZombieHuntWeapon" parent="Node2D" instance=ExtResource("3_gsasw")]
+position = Vector2(101, 545)
