@@ -3,6 +3,7 @@ extends Game
 # EXPORT #
 
 @export var piece_container : Node
+@export var move: AudioStreamPlayer
 
 # CONST #
 
@@ -39,6 +40,7 @@ func _new_click_input(position : Vector2) -> void:
 		if !Rect2(piece.collision_shape.global_position + piece_rect.position, piece_rect.size).has_point(position):
 			continue
 		piece.set_value(TicTacToePiece.Value.CIRCLE)
+		if move: move.play()
 		_piece_count -= 1
 		if _has_end():
 			return

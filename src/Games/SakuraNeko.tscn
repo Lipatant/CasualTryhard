@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cavo37gaalxaw"]
+[gd_scene load_steps=6 format=3 uid="uid://b4onley23easc"]
 
 [ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNeko.gd" id="1_2u7vv"]
 [ext_resource type="PackedScene" uid="uid://q3sn07xhuu80" path="res://src/Games/SakuraNeko/SakuraNekoUmbrella.tscn" id="2_itjlb"]
 [ext_resource type="PackedScene" uid="uid://bt5e622mhoyhy" path="res://src/Games/SakuraNeko/SakuraNekoCat.tscn" id="3_82asw"]
+[ext_resource type="AudioStream" uid="uid://qhy3h0lrmbk" path="res://sound/cat.wav" id="4_slwqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbqqp"]
 size = Vector2(100, 1000)
 
-[node name="SakuraNeko" type="Control" node_paths=PackedStringArray("border_collision_shape", "cat", "cat_movement_container", "petal_container", "timer", "timer_cat", "umbrella")]
+[node name="SakuraNeko" type="Control" node_paths=PackedStringArray("border_collision_shape", "cat", "cat_movement_container", "cat_sound", "petal_container", "timer", "timer_cat", "umbrella")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +19,7 @@ script = ExtResource("1_2u7vv")
 border_collision_shape = NodePath("Node2D/Border/CollisionShape2D")
 cat = NodePath("Node2D/Cat")
 cat_movement_container = NodePath("Node2D/CatMovementContainer")
+cat_sound = NodePath("CatSound")
 petal_container = NodePath("Node2D/PetalContainer")
 timer = NodePath("Timer")
 timer_cat = NodePath("TimerCat")
@@ -88,6 +90,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Border"]
 shape = SubResource("RectangleShape2D_gbqqp")
 disabled = true
+
+[node name="CatSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_slwqv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerCat" to="." method="_on_timer_cat_timeout"]

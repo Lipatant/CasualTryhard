@@ -5,6 +5,7 @@ extends Game
 @export var fish : FishdertaleFish
 @export var rod_container : Node
 @export var timer : Timer
+@export var fishingRod: AudioStreamPlayer
 
 # ONREADIES #
 
@@ -31,6 +32,7 @@ func _new_click_input(position : Vector2) -> void:
 # INPUT #
 
 func _spawn_rod() -> void:
+	if fishingRod: fishingRod.play()
 	if !rod_resource or !rod_container or rod_container.get_child_count() < 1 or !fish : return
 	var rod_container_point : Node2D = rod_container.get_children()[(game_manager.rng.randi() if (game_manager and game_manager.rng) else 0) % rod_container.get_child_count()]
 	if !rod_container_point: return

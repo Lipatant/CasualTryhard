@@ -5,6 +5,7 @@ extends Game
 @export var border_collision_shape : CollisionShape2D
 @export var cat : SakuraNekoCat
 @export var cat_movement_container : Node2D
+@export var cat_sound : AudioStreamPlayer
 @export var petal_container : Node2D
 @export var timer : Timer
 @export var timer_cat : Timer
@@ -54,6 +55,7 @@ func _on_petal_cat_hit() -> void:
 	if cat:
 		cat.queue_free()
 		cat = null
+	if cat_sound: cat_sound.play()
 	game_end.emit(false)
 
 # SIGNALS #
