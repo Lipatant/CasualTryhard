@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://5xg6lttjc5f8" path="res://src/Games/ZombieHunt/ZombieHuntWeapon.tscn" id="3_gsasw"]
 [ext_resource type="AudioStream" uid="uid://bkihke47hk8l0" path="res://sound/gunshot.mp3" id="4_5x3mc"]
 
-[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container", "weapon")]
+[node name="ZombieHunt" type="Control" node_paths=PackedStringArray("zombie_container", "weapon", "gunshot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_560b7")
 zombie_container = NodePath("Node2D/ZombieContainer")
 weapon = NodePath("Node2D/ZombieHuntWeapon")
+gunshot = NodePath("gunshot")
 rule = 3
 win_on_end = false
 
