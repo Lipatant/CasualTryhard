@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://boldmhk6jtyed"]
 
 [ext_resource type="Script" path="res://src/Scenes/MainMenu/MainMenu.gd" id="1_mblvg"]
-[ext_resource type="PackedScene" uid="uid://c4esenxr2qgxy" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
+[ext_resource type="PackedScene" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
 [ext_resource type="AudioStream" uid="uid://8akjg4d07af8" path="res://music/menu.mp3" id="3_jhpva"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sas02"]
