@@ -20,6 +20,7 @@ const GAMES : Array[String] = [
 	"CloudHunt",
 	"TicTacToe",
 	"Fishdertale",
+	"RythmHero",
 ]
 
 # OTHER VARIABLES #
@@ -105,12 +106,12 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 func _on_timer_transition_timeout() -> void:
 	if timer: timer.start()
 	if rule_label: rule_label.visible = false
-	if current_game:
-		current_game.start()
-		current_game.modulate = Color.WHITE
 	if previous_game:
 		previous_game.queue_free()
 		previous_game = null
+	if current_game:
+		current_game.start()
+		current_game.modulate = Color.WHITE
 	if !current_game and scene_manager:
 		scene_manager.load_scene(SceneManagerData.new(SceneManagerData.SCENE_END_OF_GAME))
 

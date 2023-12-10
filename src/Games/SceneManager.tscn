@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6mc1lgago4g5"]
 
-[ext_resource type="Script" path="res://src/Scenes/SceneManager/SceneManager.gd" id="1_oiywe"]
+[ext_resource type="Script" path="res://src/Scenes/SceneManager/SceneManager.gd" id="1_1tksh"]
 
 [node name="SceneManager" type="Node"]
-script = ExtResource("1_oiywe")
+script = ExtResource("1_1tksh")
 
 [node name="PLACEHOLDER" parent="." instance_placeholder="res://src/Scenes/MainMenu.tscn"]

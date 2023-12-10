@@ -118,4 +118,3 @@ grow_vertical = 2
 
 [node name="PLACEHOLDER" parent="Game" instance_placeholder="res://src/Games/CloudHunt.tscn"]
 layout_mode = 1
-cloud_container = null
