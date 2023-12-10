@@ -14,7 +14,7 @@ class_name GameManager
 @export var name_label_old : Label
 @export var rule_label : Label
 @export var rule_event_label : Label
-@export var loose_life: AudioStreamPlayer
+@export var loose_life_sound : AudioStreamPlayer
 
 # CONSTS #
 
@@ -122,7 +122,7 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 		if scene_manager: scene_manager.score += 1
 	else:
 		_set_health(health - 1)
-		if loose_life: loose_life.play()
+		if loose_life_sound: loose_life_sound.play()
 		if health < 1:
 			load_game("", true)
 			return

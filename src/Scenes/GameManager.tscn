@@ -16,7 +16,7 @@ font_size = 100
 outline_size = 60
 outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
-[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range", "health_label", "name_label", "name_label_old", "rule_label", "rule_event_label", "loose_life")]
+[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range", "health_label", "name_label", "name_label_old", "rule_label", "rule_event_label", "loose_life_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ name_label = NodePath("Name")
 name_label_old = NodePath("NameOld")
 rule_label = NodePath("Rule")
 rule_event_label = NodePath("RuleEvents")
-loose_life = NodePath("LooseLife")
+loose_life_sound = NodePath("LooseLife")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -148,3 +148,5 @@ autoplay = true
 
 [node name="LooseLife" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_br57t")
+volume_db = 2.0
+pitch_scale = 0.3
