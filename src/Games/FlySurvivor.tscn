@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b838nsobt0hpo"]
+
+[ext_resource type="Script" path="res://src/Games/FlySurvivor/FlySurvivor.gd" id="1_1rkpl"]
+[ext_resource type="PackedScene" uid="uid://hshgbj66qfx5" path="res://src/Games/FlySurvivor/FlySurvivorFly.tscn" id="2_nhfdc"]
+[ext_resource type="PackedScene" uid="uid://busds3sn642qg" path="res://src/Games/FlySurvivor/FlySurvivorSlap.tscn" id="3_2lovl"]
+
+[node name="FlySurvivor" type="Control" node_paths=PackedStringArray("fly", "slap")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rkpl")
+fly = NodePath("Fly")
+slap = NodePath("Slap")
+rule = 2
+
+[node name="Fly" parent="." instance=ExtResource("2_nhfdc")]
+position = Vector2(585, 278)
+
+[node name="Slap" parent="." instance=ExtResource("3_2lovl")]
+position = Vector2(588, 433)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
