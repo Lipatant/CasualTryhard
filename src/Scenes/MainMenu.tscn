@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://boldmhk6jtyed"]
+[gd_scene load_steps=4 format=3 uid="uid://boldmhk6jtyed"]
 
 [ext_resource type="Script" path="res://src/Scenes/MainMenu/MainMenu.gd" id="1_mblvg"]
-[ext_resource type="PackedScene" uid="uid://c4esenxr2qgxy" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
+[ext_resource type="PackedScene" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
+[ext_resource type="AudioStream" uid="uid://8akjg4d07af8" path="res://music/menu.mp3" id="3_jhpva"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -49,6 +50,10 @@ layout_mode = 2
 text = "Normal"
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_nrygd")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jhpva")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer1/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]

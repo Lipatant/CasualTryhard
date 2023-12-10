@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs3oy5xmgp1ri"]
+[gd_scene load_steps=6 format=3 uid="uid://cs3oy5xmgp1ri"]
 
 [ext_resource type="Script" path="res://src/Scenes/GameManager/GameManager.gd" id="1_o218o"]
+[ext_resource type="AudioStream" uid="uid://4mht42ae0rer" path="res://music/music.mp3" id="2_8wuty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d2ahh"]
 resource_local_to_scene = true
@@ -118,3 +119,7 @@ grow_vertical = 2
 
 [node name="PLACEHOLDER" parent="Game" instance_placeholder="res://src/Games/CloudHunt.tscn"]
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8wuty")
+autoplay = true
