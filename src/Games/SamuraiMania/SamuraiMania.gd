@@ -25,7 +25,9 @@ var player_locked : bool = false
 # START #
 
 func _ready() -> void:
-	if timer: timer.start()
+	if timer:
+		timer.wait_time *= game_time_multiplier
+		timer.start()
 	for _i in range(enemy_steps):
 		enemy_list.append(null)
 	if enemy_position_start and enemy_position_end:

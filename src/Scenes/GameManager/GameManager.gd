@@ -14,6 +14,7 @@ class_name GameManager
 @export var name_label_old : Label
 @export var rule_label : Label
 @export var rule_event_label : Label
+@export var rule_event_info_label : Label
 @export var loose_life_sound : AudioStreamPlayer
 
 # CONSTS #
@@ -34,14 +35,20 @@ const GAMES : Array[String] = [
 enum Event {
 	NONE,
 	LOSE,
+	FAST,
 }
 
 const EVENT_TEXT : Dictionary = {
 	Event.LOSE: "DO NOT",
 }
 
+const EVENT_TEXT_INFO : Dictionary = {
+	Event.FAST: "Faster",
+}
+
 const EVENT_EXCLUDE : Dictionary = {
 	Event.LOSE: ["TicTacToe", "SakuraNeko"],
+	Event.FAST: ["RythmHero", "Fishdertale", "SakuraNeko"],
 }
 
 # OTHER VARIABLES #
@@ -57,12 +64,14 @@ var current_game_list : Array[String] = GAMES.duplicate()
 var next_game_list : Array[String] = []
 
 var _events : Array[Event]
+var _timer_default : float
 
 # READY #
 
 func _ready() -> void:
 	if timer:
 		timer.timeout.connect(_on_timer_timeout)
+		_timer_default = timer.wait_time
 	if timer_transition:
 		timer_transition.timeout.connect(_on_timer_transition_timeout)
 	if scene_manager: scene_manager.score = 0
@@ -112,6 +121,7 @@ func _current_game_end(use_end_output: bool = true, win: bool = false) -> void:
 	if timer_transition: timer_transition.start()
 	if rule_label: rule_label.visible = true
 	if rule_event_label: rule_event_label.visible = true
+	if rule_event_info_label: rule_event_info_label.visible = true
 	var has_won : bool = win
 	if current_game:
 		if use_end_output:
@@ -133,6 +143,7 @@ func _on_timer_transition_timeout() -> void:
 	if timer: timer.start()
 	if rule_label: rule_label.visible = false
 	if rule_event_label: rule_event_label.visible = false
+	if rule_event_info_label: rule_event_info_label.visible = false
 	if previous_game:
 		previous_game.queue_free()
 		previous_game = null
@@ -167,6 +178,7 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		if name_label: name_label.text = ""
 		if rule_label: rule_label.text = ""
 		if rule_event_label: rule_event_label.text = ""
+		if rule_event_info_label: rule_event_info_label.text = ""
 		previous_game = current_game
 		current_game = null
 		return
@@ -190,14 +202,23 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		#
 		_events.clear()
 		if rule_event_label: rule_event_label.text = ""
+		if rule_event_info_label: rule_event_info_label.text = ""
 		if !(EVENT_EXCLUDE.get(Event.LOSE, []).has(game_name)) and (randi() % 5 < 1):
 			_events.append(Event.LOSE)
-			if rule_event_label: rule_event_label.text = EVENT_TEXT.get(Event.LOSE, "")
+			if rule_event_label and EVENT_TEXT.has(Event.LOSE): rule_event_label.text = EVENT_TEXT.get(Event.LOSE)
+			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.LOSE): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.LOSE)
+		if !(EVENT_EXCLUDE.get(Event.FAST, []).has(game_name)) and (randi() % 5 < 5):
+			_events.append(Event.FAST)
+			if rule_event_label and EVENT_TEXT.has(Event.FAST): rule_event_label.text = EVENT_TEXT.get(Event.FAST)
+			if rule_event_info_label and EVENT_TEXT_INFO.has(Event.FAST): rule_event_info_label.text = EVENT_TEXT_INFO.get(Event.FAST)
 		#
 		current_game.game_manager = self
 		current_game.modulate = Color.WHITE * 1.0
 		current_game.game_end.connect(_on_game_end)
+		if _events.has(Event.FAST):
+			current_game.game_time_multiplier *= 0.75
 		if game_container:
 			game_container.add_child(current_game)
 		else:
 			add_child(current_game)
+		if timer: timer.wait_time = _timer_default * current_game.game_time_multiplier

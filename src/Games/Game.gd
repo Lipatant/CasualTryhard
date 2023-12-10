@@ -50,6 +50,7 @@ signal game_end
 
 var game_manager : GameManager
 var game_state : State = State.PREPARE
+var game_time_multiplier : float = 1.0
 
 # INPUTS #
 

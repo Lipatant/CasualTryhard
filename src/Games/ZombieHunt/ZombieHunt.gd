@@ -18,6 +18,7 @@ var zombie_count : int = 0
 func _ready() -> void:
 	for child in (zombie_container.get_children() if zombie_container else get_children()):
 		if child is ZombieHuntZombie:
+			child.speed /= game_time_multiplier
 			zombie_count += 1
 
 func _process(_delta):

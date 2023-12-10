@@ -3,6 +3,7 @@ class_name ZombieHuntZombie
 
 @export var collision_shape : CollisionShape2D
 @export var sprite : Sprite2D
+@export var speed : float = 1.0
 
 var game : Game
 var die : bool = false
@@ -15,4 +16,4 @@ func kill():
 	get_parent().remove_child(self)
 
 func _process(_delta):
-	position.y += 1
+	position.y += speed
