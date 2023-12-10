@@ -2,23 +2,15 @@ extends Game
 
 # EXPORT #
 
-@export var fly : Fly
-@export var slap : Slap
-
-# ONREADIES #
-
-@onready var timer = $Timer
+@export var fly : FlySurvivorFly
+@export var slap : FlySurvivorSlap
 
 # OTHER VARIABLES #
 
-func _on_timer_timeout():
-	print("timer timeout")
-	if !slap or !fly: return
-	print("slap and fly ok")
+func end() -> bool:
+	if !slap or !fly: return super.end()
 	slap.slapNow()
-	print("slaped")
 	if slap.didHit(fly.position):
-		print("slaped hit")
 		fly.die()
-		game_end.emit(false)
-	print("end")
+		return false
+	return true

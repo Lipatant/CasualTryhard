@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7ad3jovg8jwh"
-path="res://.godot/imported/slap.png-72639ad172b9440a2dcd7814ff585f9f.ctex"
+uid="uid://dx7uftj7pch54"
+path="res://.godot/imported/fly.png-c83ef85ee6e9e4fdd891bf78e3bb23dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphic/fly_survivor/slap.png"
-dest_files=["res://.godot/imported/slap.png-72639ad172b9440a2dcd7814ff585f9f.ctex"]
+source_file="res://graphic/FlySurvivor/fly.png"
+dest_files=["res://.godot/imported/fly.png-c83ef85ee6e9e4fdd891bf78e3bb23dd.ctex"]
 
 [params]
 

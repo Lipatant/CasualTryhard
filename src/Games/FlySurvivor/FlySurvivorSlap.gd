@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Slap
+class_name FlySurvivorSlap
 
 @onready var sprite = $Sprite2D
 @onready var timer = $Timer
@@ -51,10 +51,10 @@ func getNewTarget(radius: float) -> Vector2:
 
 func didHit(point: Vector2) -> bool:
 	var slap_rect = shape.shape.get_rect()
-	print("did hit ?")
 	return Rect2(shape.global_position + slap_rect.position, slap_rect.size).has_point(point)
 
 func slapNow():
 	slap = true
 	sprite.modulate = Color(1.0,1.0,1.0)
 	sprite.rotation = -0.1
+	shape.disabled = true

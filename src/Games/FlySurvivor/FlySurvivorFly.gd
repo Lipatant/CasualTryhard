@@ -1,13 +1,10 @@
 extends Area2D
 
-class_name Fly
+class_name FlySurvivorFly
 
 @onready var sprite = $Sprite2D
 
 var dead = false
-
-func _ready():
-	pass # Replace with function body.
 
 func _process(_delta):
 	if !dead:
@@ -15,4 +12,6 @@ func _process(_delta):
 
 func die():
 	dead = true
-	sprite.modulate = Color(0.9, 0.1, 0.1)
+	if sprite:
+		sprite.frame = 1
+		sprite.modulate = Color.DIM_GRAY
