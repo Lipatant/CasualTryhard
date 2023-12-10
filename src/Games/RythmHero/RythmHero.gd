@@ -43,6 +43,7 @@ func _spawn_note() -> void:
 	if !note_container_point: return
 	var note : RythmHeroNote = note_resource.instantiate()
 	if !note: return
+	note.game = self
 	note.target_position = instrument.global_position - note_container_point.global_position
 	note_container_point.add_child(note)
 	note.position = Vector2(0, 0)

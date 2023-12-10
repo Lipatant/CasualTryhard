@@ -17,4 +17,6 @@ func _on_timer_timeout():
 	if timer_overtime: timer_overtime.start()
 
 func _on_timer_overtime_timeout():
-	if game and !game.game_state == Game.State.PLAYING: queue_free()
+	if game and game.game_state == Game.State.PLAYING:
+		game.game_end.emit(false)
+		queue_free()

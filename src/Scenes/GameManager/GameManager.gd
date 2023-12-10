@@ -120,6 +120,7 @@ func _on_timer_transition_timeout() -> void:
 ## When the game end BEFORE the timer
 func _on_game_end(_win: bool) -> void:
 	timer.stop()
+	if current_game: current_game.game_end.disconnect(_on_game_end)
 	call_deferred("_current_game_end", false, _win)
 
 # LOAD #
