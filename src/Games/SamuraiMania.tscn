@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm0m6jrqfbvun"]
+
+[ext_resource type="Script" path="res://src/Games/SamuraiMania/SamuraiMania.gd" id="1_4agwi"]
+[ext_resource type="PackedScene" uid="uid://c5irr4xb8noq" path="res://src/Games/SamuraiMania/SamuraiManiaSamurai.tscn" id="2_oh0tl"]
+[ext_resource type="PackedScene" uid="uid://b1wm8bje1qe2n" path="res://src/Games/SamuraiMania/SamuraiManiaSlash.tscn" id="3_hy0kg"]
+[ext_resource type="Texture2D" uid="uid://b3gmbphbcoi3j" path="res://graphic/SamuraiMania/Bamboo.png" id="4_1d4jm"]
+[ext_resource type="Texture2D" uid="uid://gvi1xngx7ufn" path="res://graphic/SamuraiMania/Dojo.png" id="5_u8cj3"]
+[ext_resource type="Texture2D" uid="uid://oq8d62etmynt" path="res://graphic/SamuraiMania/Zone.png" id="6_uupv7"]
+
+[node name="SamuraiMania" type="Control" node_paths=PackedStringArray("samurai", "samurai_slash", "enemy_container", "enemy_position_start", "enemy_position_end", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4agwi")
+samurai = NodePath("Node2D/Samurai")
+samurai_slash = NodePath("Node2D/Samurai/Slash")
+enemy_container = NodePath("Node2D/EnemyStart/EnemyContainer")
+enemy_position_start = NodePath("Node2D/EnemyStart")
+enemy_position_end = NodePath("Node2D/EnemyEnd")
+timer = NodePath("Timer")
+rule = 8
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Bamboo" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(529, 267)
+texture = ExtResource("4_1d4jm")
+
+[node name="Dojo" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(921, 235)
+texture = ExtResource("5_u8cj3")
+
+[node name="Zone" type="Sprite2D" parent="Node2D"]
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+position = Vector2(332, 340)
+texture = ExtResource("6_uupv7")
+
+[node name="EnemyStart" type="Marker2D" parent="Node2D"]
+position = Vector2(1220, 325)
+
+[node name="EnemyContainer" type="Node2D" parent="Node2D/EnemyStart"]
+
+[node name="EnemyEnd" type="Marker2D" parent="Node2D"]
+position = Vector2(328, 325)
+
+[node name="Samurai" parent="Node2D" instance=ExtResource("2_oh0tl")]
+position = Vector2(168, 325)
+
+[node name="Slash" parent="Node2D/Samurai" instance=ExtResource("3_hy0kg")]
+position = Vector2(150, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

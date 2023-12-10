@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1wm8bje1qe2n"]
+
+[ext_resource type="Texture2D" uid="uid://bm0yy2hcv8p8x" path="res://graphic/SamuraiMania/Slash.png" id="1_i5h2x"]
+[ext_resource type="Script" path="res://src/Games/SamuraiMania/SamuraiManiaSlash.gd" id="2_bo6lg"]
+
+[node name="Slash" type="Sprite2D" node_paths=PackedStringArray("timer_frame")]
+texture = ExtResource("1_i5h2x")
+hframes = 3
+vframes = 4
+script = ExtResource("2_bo6lg")
+timer_frame = NodePath("TimerFrame")
+
+[node name="TimerFrame" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="TimerFrame" to="." method="_on_timer_frame_timeout"]

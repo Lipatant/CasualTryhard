@@ -6,6 +6,7 @@ extends Game
 @export var instrument_collision_shape : CollisionShape2D
 @export var note_container : Node
 @export var timer : Timer
+@export var drum_sound: AudioStreamPlayer
 
 # ONREADIES #
 
@@ -26,6 +27,7 @@ func start() -> void:
 func _new_click_input(_position : Vector2) -> void:
 	if game_state != State.PLAYING: return
 	if !instrument: return
+	if drum_sound: drum_sound.play()
 	var note_hit : int = 0
 	for note in instrument.get_overlapping_areas():
 		if note is RythmHeroNote:

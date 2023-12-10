@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5irr4xb8noq"]
+
+[ext_resource type="Script" path="res://src/Games/SamuraiMania/SamuraiManiaSamurai.gd" id="1_ycd1p"]
+[ext_resource type="Texture2D" uid="uid://b7yvm74e51dpi" path="res://graphic/SamuraiMania/Samurai.png" id="2_n7o73"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyfkn"]
+size = Vector2(60, 512)
+
+[node name="Samurai" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite", "timer_frame")]
+script = ExtResource("1_ycd1p")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+timer_frame = NodePath("TimerFrame")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n7o73")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-30, 0)
+shape = SubResource("RectangleShape2D_eyfkn")
+
+[node name="TimerFrame" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="TimerFrame" to="." method="_on_timer_frame_timeout"]

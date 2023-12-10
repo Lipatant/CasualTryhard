@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://igwg835mn44t"]
+
+[ext_resource type="Texture2D" uid="uid://bp6imchgmlr3c" path="res://graphic/SamuraiMania/Ennemies.png" id="1_6cp7t"]
+[ext_resource type="Script" path="res://src/Games/SamuraiMania/SamuraiManiaEnemy.gd" id="2_bra2i"]
+
+[node name="Enemy" type="Sprite2D" node_paths=PackedStringArray("timer")]
+texture = ExtResource("1_6cp7t")
+hframes = 3
+frame = 1
+script = ExtResource("2_bra2i")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

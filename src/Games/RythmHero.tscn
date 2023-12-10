@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnwhl54gipc8b"]
+[gd_scene load_steps=10 format=3 uid="uid://djpbp61k38s1j"]
 
 [ext_resource type="Script" path="res://src/Games/RythmHero/RythmHero.gd" id="1_6wip2"]
 [ext_resource type="Texture2D" uid="uid://bol0bn1rqsbf4" path="res://graphic/RythmHero/Instrument.png" id="2_7xsip"]
 [ext_resource type="Script" path="res://src/Games/RythmHero/RythmHeroInstrument.gd" id="3_i743c"]
+[ext_resource type="AudioStream" uid="uid://cmcwwdbcdskle" path="res://sound/drum.mp3" id="4_wuy6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmqok"]
 size = Vector2(256, 256)
@@ -36,7 +37,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="RythmHero" type="Control" node_paths=PackedStringArray("instrument", "instrument_collision_shape", "note_container", "timer")]
+[node name="RythmHero" type="Control" node_paths=PackedStringArray("instrument", "instrument_collision_shape", "note_container", "timer", "drum_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +49,7 @@ instrument = NodePath("Node2D/Instrument")
 instrument_collision_shape = NodePath("Node2D/Instrument/CollisionShape2D")
 note_container = NodePath("Node2D/NoteContainer")
 timer = NodePath("Node2D/Timer")
+drum_sound = NodePath("DrumSound")
 rule = 8
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -75,5 +77,10 @@ script = ExtResource("3_i743c")
 
 [node name="Timer" type="Timer" parent="Node2D"]
 wait_time = 0.25
+
+[node name="DrumSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wuy6m")
+volume_db = 4.01
+pitch_scale = 0.75
 
 [connection signal="timeout" from="Node2D/Timer" to="." method="_on_timer_timeout"]

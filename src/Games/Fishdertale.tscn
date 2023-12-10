@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://8vmnaxw72ow0"]
+[gd_scene load_steps=4 format=3 uid="uid://bbfo2guxpqltb"]
 
 [ext_resource type="Script" path="res://src/Games/Fishdertale/Fishdertale.gd" id="1_eusx0"]
 [ext_resource type="PackedScene" uid="uid://dy65iwsn3tvoa" path="res://src/Games/Fishdertale/FishertaleFish.tscn" id="2_dv0ne"]
+[ext_resource type="AudioStream" uid="uid://baj1o74wlieqk" path="res://sound/fishingRod.mp3" id="3_uvagh"]
 
-[node name="Fishdertale" type="Control" node_paths=PackedStringArray("fish", "rod_container", "timer")]
+[node name="Fishdertale" type="Control" node_paths=PackedStringArray("fish", "rod_container", "timer", "fishingRod")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +15,7 @@ script = ExtResource("1_eusx0")
 fish = NodePath("Node2D/Fish")
 rod_container = NodePath("Node2D/RodContainer")
 timer = NodePath("Timer")
+fishingRod = NodePath("AudioStreamPlayer")
 rule = 8
 
 [node name="Timer" type="Timer" parent="."]
@@ -52,6 +54,10 @@ position = Vector2(582, 728)
 
 [node name="Point8" type="Node2D" parent="Node2D/RodContainer"]
 position = Vector2(1274, 724)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uvagh")
+volume_db = 5.622
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Node2D/Fish" to="." method="_on_fish_area_entered"]
