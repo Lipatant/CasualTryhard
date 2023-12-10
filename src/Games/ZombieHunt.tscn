@@ -14,30 +14,41 @@ grow_vertical = 2
 script = ExtResource("1_560b7")
 zombie_container = NodePath("Node2D/ZombieContainer")
 weapon = NodePath("Node2D/ZombieHuntWeapon")
+rule = 3
+win_on_end = false
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, 500)
 points = PackedVector2Array(0, 0, 1200, 0)
-default_color = Color(0.678431, 0, 0, 1)
+default_color = Color(1, 1, 1, 0.301961)
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="ZombieContainer" type="Node2D" parent="Node2D"]
 
-[node name="Zombie" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(168, 102)
+[node name="Zombie1" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
+position = Vector2(114, 122)
 
 [node name="Zombie2" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(329, 142)
+position = Vector2(241, 143)
 
 [node name="Zombie3" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(560, 111)
+position = Vector2(373, 83)
 
 [node name="Zombie4" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(788, 144)
+position = Vector2(495, 154)
 
 [node name="Zombie5" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
-position = Vector2(994, 111)
+position = Vector2(615, 125)
+
+[node name="Zombie6" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
+position = Vector2(756, 154)
+
+[node name="Zombie7" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
+position = Vector2(892, 122)
+
+[node name="Zombie8" parent="Node2D/ZombieContainer" instance=ExtResource("2_xovgl")]
+position = Vector2(1030, 74)
 
 [node name="ZombieHuntWeapon" parent="Node2D" instance=ExtResource("3_gsasw")]
 position = Vector2(101, 545)
