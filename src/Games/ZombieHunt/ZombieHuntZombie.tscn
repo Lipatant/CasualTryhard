@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://vmuo63clehkt"]
+
+[ext_resource type="Script" path="res://src/Games/ZombieHunt/ZombieHuntZombie.gd" id="1_gjc2g"]
+[ext_resource type="Texture2D" uid="uid://sarcas4g41p0" path="res://graphic/ZombieHunt/Zombie.png" id="2_v3wnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a16a2"]
+size = Vector2(85, 124)
+
+[node name="Zombie" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
+script = ExtResource("1_gjc2g")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.692, 1)
+texture = ExtResource("2_v3wnc")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_a16a2")

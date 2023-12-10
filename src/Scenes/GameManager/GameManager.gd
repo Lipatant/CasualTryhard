@@ -19,6 +19,7 @@ class_name GameManager
 const GAMES : Array[String] = [
 	"CloudHunt",
 	"TicTacToe",
+	"ZombieHunt",
 	"Fishdertale",
 	"RythmHero",
 ]
