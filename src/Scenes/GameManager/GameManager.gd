@@ -93,18 +93,20 @@ func _process(_delta: float) -> void:
 		elif timer_transition and timer_transition.wait_time > 0:
 			timer_range.value = 1.0 - timer_transition.time_left / timer_transition.wait_time
 	if timer and timer.is_stopped() and !timer_transition.is_stopped() and timer_transition.wait_time > 0:
+		var transition_ratio : float = timer_transition.time_left / timer_transition.wait_time
+		var transition_ratio_inv : float = 1.0 - transition_ratio
 		if current_game:
-			current_game.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
-			current_game.position = _current_transition * timer_transition.time_left / timer_transition.wait_time
-			current_game.rotation = _current_transition_rotation * timer_transition.time_left / timer_transition.wait_time
+			current_game.modulate = Color.WHITE * transition_ratio_inv
+			current_game.position = _current_transition * transition_ratio
+			current_game.rotation = _current_transition_rotation * transition_ratio
 		if previous_game:
-			previous_game.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
-			previous_game.position = _current_transition * (1.0 - timer_transition.time_left / timer_transition.wait_time)
-			previous_game.rotation = _current_transition_rotation * (1.0 - timer_transition.time_left / timer_transition.wait_time)
+			previous_game.modulate = Color.WHITE * transition_ratio
+			previous_game.position = _current_transition * transition_ratio_inv
+			previous_game.rotation = _current_transition_rotation * transition_ratio_inv
 		if name_label_old:
-			name_label_old.modulate = Color.WHITE * timer_transition.time_left / timer_transition.wait_time
+			name_label_old.modulate = Color.WHITE * transition_ratio
 		if name_label:
-			name_label.modulate = Color.WHITE * (1.0 - timer_transition.time_left / timer_transition.wait_time)
+			name_label.modulate = Color.WHITE * transition_ratio_inv
 
 # HEALTHS #
 
