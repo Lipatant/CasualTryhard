@@ -251,7 +251,7 @@ func load_game(game_name: String = "", force_null: bool = false) -> void:
 		if _events.has(Event.FAST):
 			current_game.game_time_multiplier *= 0.75
 		if _events.has(Event.REALLYFAST):
-			current_game.game_time_multiplier *= 0.5
+			current_game.game_time_multiplier *= 0.6
 		if game_container:
 			game_container.add_child(current_game)
 		else:
