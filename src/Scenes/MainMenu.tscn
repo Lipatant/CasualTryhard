@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://boldmhk6jtyed"]
+[gd_scene load_steps=5 format=3 uid="uid://boldmhk6jtyed"]
 
 [ext_resource type="Script" path="res://src/Scenes/MainMenu/MainMenu.gd" id="1_mblvg"]
 [ext_resource type="PackedScene" path="res://src/Scenes/MenuBackground.tscn" id="2_nrygd"]
 [ext_resource type="AudioStream" uid="uid://8akjg4d07af8" path="res://music/menu.mp3" id="3_jhpva"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sas02"]
+font_size = 50
+outline_size = 3
+shadow_size = 5
+shadow_color = Color(0.262745, 0.262745, 0.262745, 0)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -54,6 +60,25 @@ text = "Normal"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jhpva")
 autoplay = true
+
+[node name="Contributors" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 565.0
+offset_right = 195.0
+offset_bottom = 640.0
+text = "Virgile BERRIER
+Stanislas COMMENGE
+Damien BENAIS-CAPTAL"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 75.0
+offset_right = 742.0
+offset_bottom = 144.0
+text = "CasualTryhard"
+label_settings = SubResource("LabelSettings_sas02")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer1/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]
