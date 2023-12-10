@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwkvws3vu4blh"]
+[gd_scene load_steps=7 format=3 uid="uid://dwkvws3vu4blh"]
 
 [ext_resource type="Script" path="res://src/Games/TicTacToe/TicTacToe.gd" id="1_0r61o"]
 [ext_resource type="PackedScene" uid="uid://cexb1ymcxr3uh" path="res://src/Games/TicTacToe/TicTacToePiece.tscn" id="2_epxpp"]
+[ext_resource type="Texture2D" uid="uid://ca4ynjiv662s7" path="res://graphic/TicTacToe/Ruller.png" id="2_hjr15"]
+[ext_resource type="Texture2D" uid="uid://chw8tut5jmr5r" path="res://graphic/TicTacToe/Drawings.png" id="2_yuesu"]
 [ext_resource type="Texture2D" uid="uid://5tbc4qwbt05d" path="res://graphic/TicTacToe/Separation.png" id="3_k4evj"]
 [ext_resource type="AudioStream" uid="uid://drt6blq6oj8os" path="res://sound/tictactoe.mp3" id="4_rveqb"]
 
@@ -20,6 +22,16 @@ win_on_end = false
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1, 0)
+
+[node name="Ruller" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(64, 247)
+texture = ExtResource("2_hjr15")
+
+[node name="Drawings" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(1051, 295)
+texture = ExtResource("2_yuesu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0.392157)
