@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs3oy5xmgp1ri"]
+[gd_scene load_steps=7 format=3 uid="uid://cs3oy5xmgp1ri"]
 
 [ext_resource type="Script" path="res://src/Scenes/GameManager/GameManager.gd" id="1_o218o"]
 [ext_resource type="AudioStream" uid="uid://4mht42ae0rer" path="res://music/music.mp3" id="2_8wuty"]
+[ext_resource type="AudioStream" uid="uid://4x44kmsjcjbl" path="res://sound/fail.mp3" id="3_br57t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d2ahh"]
 resource_local_to_scene = true
@@ -15,7 +16,7 @@ font_size = 100
 outline_size = 60
 outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
-[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range", "health_label", "name_label", "name_label_old", "rule_label", "rule_event_label")]
+[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range", "health_label", "name_label", "name_label_old", "rule_label", "rule_event_label", "loose_life_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +33,7 @@ name_label = NodePath("Name")
 name_label_old = NodePath("NameOld")
 rule_label = NodePath("Rule")
 rule_event_label = NodePath("RuleEvents")
+loose_life_sound = NodePath("LooseLife")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -140,6 +142,11 @@ grow_vertical = 2
 [node name="PLACEHOLDER" parent="Game" instance_placeholder="res://src/Games/CloudHunt.tscn"]
 layout_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8wuty")
 autoplay = true
+
+[node name="LooseLife" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_br57t")
+volume_db = 2.0
+pitch_scale = 0.3
