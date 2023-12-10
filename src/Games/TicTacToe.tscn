@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5tbc4qwbt05d" path="res://graphic/TicTacToe/Separation.png" id="3_k4evj"]
 [ext_resource type="AudioStream" uid="uid://drt6blq6oj8os" path="res://sound/tictactoe.mp3" id="4_rveqb"]
 
-[node name="TicTacToe" type="Control" node_paths=PackedStringArray("piece_container", "move")]
+[node name="TicTacToe" type="Control" node_paths=PackedStringArray("piece_container", "move_sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0r61o")
 piece_container = NodePath("Node2D/PieceContainer")
-move = NodePath("move")
+move_sound = NodePath("Move")
 rule = 10
 win_on_end = false
 
@@ -79,7 +79,7 @@ position = Vector2(831, 564)
 [node name="Sprite2D" parent="Node2D/PieceContainer/Piece9" index="0"]
 frame = 17
 
-[node name="move" type="AudioStreamPlayer" parent="."]
+[node name="Move" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rveqb")
 volume_db = 24.0
 
