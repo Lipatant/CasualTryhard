@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b838nsobt0hpo"]
+
+[ext_resource type="Script" path="res://src/Games/FlySurvivor/FlySurvivor.gd" id="1_1rkpl"]
+[ext_resource type="PackedScene" uid="uid://hshgbj66qfx5" path="res://src/Games/FlySurvivor/FlySurvivorFly.tscn" id="2_nhfdc"]
+[ext_resource type="PackedScene" uid="uid://busds3sn642qg" path="res://src/Games/FlySurvivor/FlySurvivorSlap.tscn" id="3_2lovl"]
+[ext_resource type="Texture2D" uid="uid://dx7uftj7pch54" path="res://graphic/FlySurvivor/fly.png" id="4_12fsm"]
+
+[node name="FlySurvivor" type="Control" node_paths=PackedStringArray("fly", "slap")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rkpl")
+fly = NodePath("Fly")
+slap = NodePath("Slap")
+rule = 2
+win_on_end = null
+
+[node name="Splash1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(83, 96)
+texture = ExtResource("4_12fsm")
+flip_h = true
+flip_v = true
+vframes = 2
+frame = 1
+
+[node name="Splash2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(1121, 653)
+texture = ExtResource("4_12fsm")
+vframes = 2
+frame = 1
+
+[node name="Splash3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(466, 466)
+texture = ExtResource("4_12fsm")
+flip_h = true
+vframes = 2
+frame = 1
+
+[node name="Fly" parent="." instance=ExtResource("2_nhfdc")]
+position = Vector2(585, 278)
+
+[node name="Slap" parent="." instance=ExtResource("3_2lovl")]
+position = Vector2(588, 433)

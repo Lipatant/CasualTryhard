@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hshgbj66qfx5"]
+
+[ext_resource type="Script" path="res://src/Games/FlySurvivor/FlySurvivorFly.gd" id="1_qavax"]
+[ext_resource type="Texture2D" uid="uid://dx7uftj7pch54" path="res://graphic/FlySurvivor/fly.png" id="2_nqffs"]
+
+[node name="Fly" type="Area2D"]
+script = ExtResource("1_qavax")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nqffs")
+vframes = 2
