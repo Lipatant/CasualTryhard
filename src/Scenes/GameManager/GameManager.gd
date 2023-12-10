@@ -22,6 +22,7 @@ const GAMES : Array[String] = [
 	"ZombieHunt",
 	"Fishdertale",
 	"RythmHero",
+	"SakuraNeko",
 ]
 
 # OTHER VARIABLES #

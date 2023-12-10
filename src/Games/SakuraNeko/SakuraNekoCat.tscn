@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt5e622mhoyhy"]
+
+[ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNekoCat.gd" id="1_ixrpy"]
+[ext_resource type="Texture2D" uid="uid://cvlih4cisqkmc" path="res://graphic/SakuraNeko/Cat.png" id="2_lxaia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxkkm"]
+size = Vector2(64, 64)
+
+[node name="Cat" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
+collision_mask = 0
+script = ExtResource("1_ixrpy")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lxaia")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jxkkm")
+disabled = true

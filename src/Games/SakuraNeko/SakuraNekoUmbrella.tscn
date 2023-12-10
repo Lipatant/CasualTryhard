@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://q3sn07xhuu80"]
+
+[ext_resource type="Texture2D" uid="uid://dapnam1wp3ioo" path="res://graphic/SakuraNeko/Umbrella.png" id="1_p5hof"]
+[ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNekoUmbrella.gd" id="1_ut4i7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmijg"]
+size = Vector2(64, 128)
+
+[node name="Umbrella" type="Area2D" node_paths=PackedStringArray("collision_shape", "sprite")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ut4i7")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p5hof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_jmijg")
+disabled = true

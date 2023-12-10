@@ -30,6 +30,5 @@ func _physics_process(delta: float) -> void:
 		velocity = difference.normalized() * speed * delta
 	position += velocity
 
-
 func _on_timer_timeout():
 	pass # Replace with function body.
