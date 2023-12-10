@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbfo2guxpqltb"]
+[gd_scene load_steps=5 format=3 uid="uid://bbfo2guxpqltb"]
 
 [ext_resource type="Script" path="res://src/Games/Fishdertale/Fishdertale.gd" id="1_eusx0"]
+[ext_resource type="Texture2D" uid="uid://dpvmdjmwj1pld" path="res://graphic/Fishdertale/Kelp.png" id="2_an6by"]
 [ext_resource type="PackedScene" uid="uid://dy65iwsn3tvoa" path="res://src/Games/Fishdertale/FishertaleFish.tscn" id="2_dv0ne"]
 [ext_resource type="AudioStream" uid="uid://baj1o74wlieqk" path="res://sound/fishingRod.mp3" id="3_uvagh"]
 
@@ -22,6 +23,17 @@ rule = 8
 wait_time = 2.0
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Ground1" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(911, 409)
+texture = ExtResource("2_an6by")
+
+[node name="Ground2" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(243, 157)
+rotation = 3.14159
+texture = ExtResource("2_an6by")
 
 [node name="Fish" parent="Node2D" instance=ExtResource("2_dv0ne")]
 position = Vector2(585, 332)
