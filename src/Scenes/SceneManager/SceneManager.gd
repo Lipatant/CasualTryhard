@@ -4,7 +4,9 @@ class_name SceneManager
 # OTHER VARIABLES #
 
 var current_scene : CanvasItem
-#var player_manager : PlayerManager = PlayerManager.new()
+
+var score : int
+var last_game : String
 
 # READY #
 

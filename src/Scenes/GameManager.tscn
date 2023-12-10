@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs3oy5xmgp1ri"]
+[gd_scene load_steps=5 format=3 uid="uid://cs3oy5xmgp1ri"]
 
 [ext_resource type="Script" path="res://src/Scenes/GameManager/GameManager.gd" id="1_o218o"]
 
-[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range")]
+[sub_resource type="LabelSettings" id="LabelSettings_d2ahh"]
+resource_local_to_scene = true
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_4pcfu"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_v27db"]
+font_size = 100
+outline_size = 60
+outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="GameManager" type="Control" node_paths=PackedStringArray("game_container", "timer", "timer_transition", "timer_range", "health_label", "name_label", "name_label_old", "rule_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +26,10 @@ game_container = NodePath("Game")
 timer = NodePath("Timer")
 timer_transition = NodePath("TimerTransition")
 timer_range = NodePath("TimerRange")
+health_label = NodePath("Health")
+name_label = NodePath("Name")
+name_label_old = NodePath("NameOld")
+rule_label = NodePath("Rule")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -35,6 +51,62 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 show_percentage = false
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+offset_right = 58.0
+grow_vertical = 0
+text = " ♥♥♥"
+label_settings = SubResource("LabelSettings_d2ahh")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_4pcfu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NameOld" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_4pcfu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Rule" type="Label" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -11.5
+offset_right = 41.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Win or Tie!"
+label_settings = SubResource("LabelSettings_v27db")
+uppercase = true
 
 [node name="Game" type="Control" parent="."]
 layout_mode = 1
