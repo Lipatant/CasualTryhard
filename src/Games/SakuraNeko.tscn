@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://cavo37gaalxaw"]
+
+[ext_resource type="Script" path="res://src/Games/SakuraNeko/SakuraNeko.gd" id="1_2u7vv"]
+[ext_resource type="PackedScene" uid="uid://q3sn07xhuu80" path="res://src/Games/SakuraNeko/SakuraNekoUmbrella.tscn" id="2_itjlb"]
+[ext_resource type="PackedScene" uid="uid://bt5e622mhoyhy" path="res://src/Games/SakuraNeko/SakuraNekoCat.tscn" id="3_82asw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbqqp"]
+size = Vector2(100, 1000)
+
+[node name="SakuraNeko" type="Control" node_paths=PackedStringArray("border_collision_shape", "cat", "cat_movement_container", "petal_container", "timer", "timer_cat", "umbrella")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2u7vv")
+border_collision_shape = NodePath("Node2D/Border/CollisionShape2D")
+cat = NodePath("Node2D/Cat")
+cat_movement_container = NodePath("Node2D/CatMovementContainer")
+petal_container = NodePath("Node2D/PetalContainer")
+timer = NodePath("Timer")
+timer_cat = NodePath("TimerCat")
+umbrella = NodePath("Node2D/Umbrella")
+rule = 8
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="TimerCat" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CatMovementContainer" type="Node2D" parent="Node2D"]
+
+[node name="Target1" type="Marker2D" parent="Node2D/CatMovementContainer"]
+position = Vector2(0, 68)
+
+[node name="Target2" type="Marker2D" parent="Node2D/CatMovementContainer"]
+position = Vector2(0, 585)
+
+[node name="Target3" type="Marker2D" parent="Node2D/CatMovementContainer"]
+position = Vector2(0, 336)
+
+[node name="PetalContainer" type="Node2D" parent="Node2D"]
+position = Vector2(1189, 0)
+
+[node name="Target1" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 83)
+
+[node name="Target2" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 600)
+
+[node name="Target3" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 523)
+
+[node name="Target4" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 147)
+
+[node name="Target5" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 223)
+
+[node name="Target6" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 39)
+
+[node name="Target7" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 453)
+
+[node name="Target8" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 285)
+
+[node name="Target9" type="Marker2D" parent="Node2D/PetalContainer"]
+position = Vector2(0, 404)
+
+[node name="Umbrella" parent="Node2D" instance=ExtResource("2_itjlb")]
+position = Vector2(323, 335)
+
+[node name="Cat" parent="Node2D" instance=ExtResource("3_82asw")]
+position = Vector2(64, 335)
+
+[node name="Border" type="Area2D" parent="Node2D"]
+position = Vector2(-212, 335)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Border"]
+shape = SubResource("RectangleShape2D_gbqqp")
+disabled = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerCat" to="." method="_on_timer_cat_timeout"]
