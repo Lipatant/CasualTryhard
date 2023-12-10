@@ -20,9 +20,6 @@ func _ready() -> void:
 
 func _process(_delta):
 	if !zombie_container: return
-	for zombie : ZombieHuntZombie in zombie_container.get_children():
-		if zombie.position.y > 500:
-			game_end.emit(false)
 
 func _new_click_input(position : Vector2) -> void:
 	if game_state != State.PLAYING or !zombie_container or !weapon: return
